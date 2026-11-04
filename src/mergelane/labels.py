@@ -17,24 +17,14 @@ import re
 
 import pandas as pd
 
-FIX_PATTERN = re.compile(r"\b(fix|fixes|fixed|bug|bugfix|hotfix|regression|patch)\b", re.I)
-REVERT_TITLE = re.compile(r'^\s*revert\b', re.I)
-REVERTS_SHA = re.compile(r"this reverts commit ([0-9a-f]{7,40})", re.I)
+from .rules import BOILERPLATE, REVERT_TITLE, REVERTS_SHA, is_boilerplate  # noqa: F401
 
-BOILERPLATE = re.compile(
-    r"(^|/)(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|poetry\.lock|Cargo\.lock|go\.sum"
-    r"|CHANGELOG(\.md)?|\.gitignore)$|(^|/)(dist|build|vendor|node_modules)/|\.min\.(js|css)$",
-    re.I,
-)
+FIX_PATTERN = re.compile(r"\b(fix|fixes|fixed|bug|bugfix|hotfix|regression|patch)\b", re.I)
 
 
 def is_fix_tagged(title: str | None, head_ref: str | None = None) -> bool:
     text = f"{title or ''} {head_ref or ''}".replace("/", " ").replace("-", " ").replace("_", " ")
     return bool(FIX_PATTERN.search(text))
-
-
-def is_boilerplate(path: str) -> bool:
-    return bool(BOILERPLATE.search(path))
 
 
 def follow_up_fix_labels(prs: pd.DataFrame, files: pd.DataFrame, window_days: int = 30) -> pd.Series:
