@@ -25,3 +25,15 @@ Future fix-PR activity alone now gives AUC 0.73 (was 0.765). Within activity str
 - Nominally passes the go bar (at least 20% fast-tracked at 1% risk), but only on unverified labels.
 - The simple docs/tests rule already reaches 16%, so the model's real added value is about +5 to 7 points of coverage.
 - Still to do before go/no-go: LLM-verified labels on a sample (to estimate label precision), and rolling calibration.
+
+## Rolling calibration (`scripts/rolling_calibration.py`, `docs/week2_rolling.csv`)
+Calibrate on the month just before each test month (model trained once, before Dec 2025):
+
+| Budget | Dec→Jan coverage / risk | Jan→Feb coverage / risk |
+|---|---|---|
+| 1% | 22.6% / 0.52% ✓ | 23.9% / 0.72% ✓ |
+| 2% | 33.9% / 1.55% ✓ | 33.9% / 1.96% ✓ |
+| 5% | 66.4% / 5.20% ✗ | 60.1% / 4.76% ✓ |
+| 10% | 96.3% / 10.75% ✗ | 90.4% / 9.99% ✓ |
+
+The tight budgets (1% and 2%) hold in both months. The two small misses are at loose budgets in the Dec→Jan step (holiday month as calibration). With delta = 0.1, an occasional miss is allowed, but Jan→Feb holding everywhere suggests recency matters. The product should recalibrate monthly.
