@@ -1,5 +1,10 @@
 """Confirm the calibration schemes on months they were not chosen on.
 
+Usage: rollforward_eval.py [CAL_MONTHS] [FALLBACK]
+  CAL_MONTHS: how many months before the test month are used for calibration (1 or 3)
+  FALLBACK:   what a group too small to certify gets: "global" cut or "closed" (no fast lane)
+
+
 The schemes were compared on the stage-5 unseen-repo folds (calibrate Dec 2025,
 test Jan-Feb 2026). Here each month M in Oct, Nov, Dec 2025 is a fresh test:
 train on everything merged before M-1, calibrate on M-1, test on M (all repos).
@@ -20,6 +25,10 @@ from mergelane.conformal import select_threshold
 from mergelane.inference import AGENTS, FEATURES
 
 LABEL, DELTA, ALPHAS = "trouble_lines", 0.10, [0.01, 0.02, 0.05]
+CAL_MONTHS = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+FALLBACK = sys.argv[2] if len(sys.argv) > 2 else "global"
+TEST_MONTHS = ["2025-10", "2025-11", "2025-12", "2026-01", "2026-02"] if len(sys.argv) > 1 else ["2025-10", "2025-11", "2025-12"]
+print("calibration months:", CAL_MONTHS, "| small-group fallback:", FALLBACK, flush=True)
 PARAMS = dict(n_estimators=400, learning_rate=0.05, num_leaves=31, subsample=0.8, subsample_freq=1,
               colsample_bytree=0.8, min_child_samples=50, verbose=-1)
 LR = lambda: LogisticRegression(C=0.5, max_iter=300, solver="liblinear")
@@ -38,10 +47,10 @@ SCHEMES = {"global": lambda x: pd.Series("all", index=x.index),
            "agent x stars": lambda x: x.agent + " | " + x.star_band}
 
 rows = []
-for test_m in ["2025-10", "2025-11", "2025-12"]:
-    tm = pd.Period(test_m, "M"); cm = tm - 1
-    month = d.merged_at.dt.tz_localize(None).dt.to_period("M")
-    tr = np.where(month < cm)[0]; ca = np.where(month == cm)[0]; te = np.where(month == tm)[0]
+month = d.merged_at.dt.tz_localize(None).dt.to_period("M")
+for test_m in TEST_MONTHS:
+    tm = pd.Period(test_m, "M"); c0 = tm - CAL_MONTHS
+    tr = np.where(month < c0)[0]; ca = np.where((month >= c0) & (month < tm))[0]; te = np.where(month == tm)[0]
     y = d.loc[tr, LABEL].values
     oof = np.zeros(len(tr))
     for a_, b_ in KFold(3, shuffle=True, random_state=0).split(tr):
@@ -64,7 +73,9 @@ for test_m in ["2025-10", "2025-11", "2025-12"]:
             for g in tg.unique():
                 msk = (cg == g).values
                 if msk.sum() < needed(a):
-                    thr = None if glob is None else glob.threshold
+                    thr = None if (glob is None or FALLBACK == "closed" or name == "global") else glob.threshold
+                    if name == "global":
+                        thr = None if glob is None else glob.threshold
                 else:
                     t = select_threshold(cal.s.values[msk], cal[LABEL].values[msk], alpha=a, delta=DELTA)
                     thr = None if t is None else t.threshold
@@ -81,10 +92,10 @@ for test_m in ["2025-10", "2025-11", "2025-12"]:
                                  fast=n_ / len(x), risk=k_ / n_ if n_ else np.nan, n_fast=n_,
                                  p_breach=binom.sf(k_ - 1, n_, a) if n_ else np.nan))
 r = pd.DataFrame(rows)
-r.to_csv("docs/rollforward_eval.csv", index=False)
+r.to_csv(f"docs/rollforward_eval_cal{CAL_MONTHS}_{FALLBACK}.csv" if len(sys.argv) > 1 else "docs/rollforward_eval.csv", index=False)
 pd.set_option("display.width", 200)
 summ = r.groupby(["budget", "scheme"]).apply(lambda x: pd.Series({
     "fast_all_mean": x.loc[x.group == "all", "fast"].mean(), "risk_all_max": x.loc[x.group == "all", "risk"].max(),
-    "groups_over": int((x.risk > x.budget).sum()), "real_breaches_p<0.05": int((x.p_breach < 0.05).sum())}),
+    "groups_over": int((x.risk > x.name[0]).sum()), "real_breaches_p<0.05": int((x.p_breach < 0.05).sum())}),
     include_groups=False)
 print(summ.round(4).to_string())
