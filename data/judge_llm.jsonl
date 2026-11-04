@@ -1,0 +1,1000 @@
+{"pair_id": "3858936498-3860365035", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.85, "reason": "B fixes credential leak in daemon A just added"}
+{"pair_id": "3312131551-3316818943", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.8, "reason": "B reformats whitespace and adds list init; not an A bug"}
+{"pair_id": "3962146084-4058933337", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "unrelated orderBy fix"}
+{"pair_id": "3727891565-3734789884", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.6, "reason": "B makes A's new toggle persist (reported bug #1052)"}
+{"pair_id": "3494452883-3502080391", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.85, "reason": "optimistic update bug unrelated to A"}
+{"pair_id": "4009405952-4125131442", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.6, "reason": "B removes duplicate method A introduced that broke tsc"}
+{"pair_id": "3840764044-3945906745", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.75, "reason": "A's GetReadyWork use in mol current missed ephemeral steps"}
+{"pair_id": "4079317391-4079341741", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "unrelated merge-loop fix"}
+{"pair_id": "3766004264-3771308435", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "styling tweak, not a fix of A"}
+{"pair_id": "3971308768-4037516056", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "new feature export line touched"}
+{"pair_id": "3824890675-3834833627", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.75, "reason": "different Windows bug (claude.cmd), not caused by A"}
+{"pair_id": "4071933201-4107571377", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.8, "reason": "adds retries; not a bug of A's refactor"}
+{"pair_id": "4091617465-4092151758", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.6, "reason": "prompt-tuning iteration, not a fix of A"}
+{"pair_id": "4133180184-4140699422", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.8, "reason": "A passed pageSignal which navigate aborts; B fixes the silent failure"}
+{"pair_id": "4004040152-4031960948", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "transformers upgrade compat, unrelated"}
+{"pair_id": "4000476187-4000501233", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "formatting only"}
+{"pair_id": "3147041541-3147929639", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.6, "reason": "A's rewritten note serialization dropped automations"}
+{"pair_id": "3809360493-3825025170", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.85, "reason": "schema simplification, not a bug from A"}
+{"pair_id": "4079101855-4079192949", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.8, "reason": "A's OAuth flow did not work; B fixes redirect"}
+{"pair_id": "3782721047-3862137992", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.9, "reason": "architecture refactor unrelated to A"}
+{"pair_id": "3922227246-3924927730", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.95, "reason": "docs rename"}
+{"pair_id": "3644609704-3707859444", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.5, "reason": "A registered docket fns by bare name; B fixes collisions"}
+{"pair_id": "4003712648-4007194136", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.6, "reason": "repeat perf tweak, not a bug"}
+{"pair_id": "3716362853-3721492085", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.7, "reason": "A's kwargs check crashes when kwargs is None"}
+{"pair_id": "3128258418-3128412980", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.7, "reason": "A's XML serialization fix was still wrong"}
+{"pair_id": "3939849583-3940138291", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.55, "reason": "A's flaky-test fix was insufficient"}
+{"pair_id": "3944181414-4013798514", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.8, "reason": "unrelated bug elsewhere"}
+{"pair_id": "3747663458-3763114157", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.75, "reason": "A's new highlighting missed multi-type params"}
+{"pair_id": "3912668333-3916686599", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.7, "reason": "switch ffmpeg source, not A's bug"}
+{"pair_id": "3708269781-3739986838", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.75, "reason": "error-code change, not a fix of A"}
+{"pair_id": "3135644308-3135681625", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.7, "reason": "A's macro display ignored units"}
+{"pair_id": "4111405173-4154984893", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.85, "reason": "unrelated install fix"}
+{"pair_id": "3736622325-3736875982", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.75, "reason": "A's thumbnail helper missed i.ytimg.com host"}
+{"pair_id": "3270558504-3279091279", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.85, "reason": "A wrote MCP config to the wrong file"}
+{"pair_id": "4114141122-4114189951", "model": "llm", "sample": "random", "verdict": "yes", "confidence": 0.9, "reason": "A's self-update used a URL that does not exist"}
+{"pair_id": "4113544608-4114335501", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.7, "reason": "different change in same function"}
+{"pair_id": "4080330970-4115444972", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.55, "reason": "Safari bug likely predates A"}
+{"pair_id": "3961025432-3966812691", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.6, "reason": "new reliability work"}
+{"pair_id": "3221990509-3228986682", "model": "llm", "sample": "random", "verdict": "unclear", "confidence": 0.5, "reason": "A's path resolution did not cover asdf shims; gap vs bug"}
+{"pair_id": "4070969387-4177617639", "model": "llm", "sample": "random", "verdict": "no", "confidence": 0.8, "reason": "type signature tweak unrelated to A"}
+{"pair_id": "4106276512-4107326163", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's SDK-delegated headless login was unusable remotely"}
+{"pair_id": "3153741021-3199409969", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated history UX"}
+{"pair_id": "4061438023-4061422070", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated button move"}
+{"pair_id": "4023797663-4024005555", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's pack command failed on 2-segment versions"}
+{"pair_id": "3930306060-3930861962", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated subject change"}
+{"pair_id": "3803742628-3851221377", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "oscillation may come from A's pivot changes"}
+{"pair_id": "3418338475-3485042954", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "4076607908-4091832265", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's env overlay not applied to gitFileExec"}
+{"pair_id": "3121818956-3177143005", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's dialog listed wrong tool types"}
+{"pair_id": "4008291694-4012095423", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "more review cleanups"}
+{"pair_id": "3935318739-3960366648", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "different orphan path"}
+{"pair_id": "4116980074-4166574175", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "sandbox gate may be from A"}
+{"pair_id": "3596895602-3597125819", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's Python-in-container approach failed for Android"}
+{"pair_id": "4050806072-4177914457", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated connector"}
+{"pair_id": "3787442074-3824846878", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's split selector shows []"}
+{"pair_id": "3999696247-4013260140", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3861293897-4017553713", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "Stripe trial bug not from A"}
+{"pair_id": "3775017434-3818859886", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "new MCP support"}
+{"pair_id": "3844365979-3862137992", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's migration used flawed lazy hooks"}
+{"pair_id": "4003572078-4137742257", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's symbol() returns quoted names"}
+{"pair_id": "4120769823-4147451961", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "detached spawn predates A"}
+{"pair_id": "3244980168-3258678304", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "new transpiler features"}
+{"pair_id": "3533294063-3539606801", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's AnyDesk Process.Start was injectable"}
+{"pair_id": "3170134238-3171654208", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A may have split render paths"}
+{"pair_id": "3968663930-4104119956", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3770722718-3771552642", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's refactor broke tsc"}
+{"pair_id": "3706049926-3755826811", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "z-index issue unrelated"}
+{"pair_id": "3209330885-3214435240", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "feature extension"}
+{"pair_id": "3188718609-3188785540", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's slice handling mishandled out-of-range"}
+{"pair_id": "3245334762-3251241920", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "4060223669-4171125120", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's proactive requests flooded path requests"}
+{"pair_id": "3913824715-3927979290", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3790406790-3819096174", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3302458992-3321398701", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different bug"}
+{"pair_id": "3798942651-3812492622", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4032983068-4034469352", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "todoist bug not from A"}
+{"pair_id": "3266763733-3267110060", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "security issues found in A's review"}
+{"pair_id": "3505540843-3528669956", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "preexisting counting bug"}
+{"pair_id": "4058784434-4065827492", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's write path still fragile"}
+{"pair_id": "3797673998-3881288995", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated cleanup"}
+{"pair_id": "3854030892-3863047200", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "regression from a different pass"}
+{"pair_id": "3802709573-3809524974", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated handler"}
+{"pair_id": "3687910393-3692258049", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "validFields gap predates A"}
+{"pair_id": "3436649764-3450604708", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's PyObject drag payload broke drops"}
+{"pair_id": "3977657675-3989556866", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "link style change"}
+{"pair_id": "3603560984-3604632131", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "fullscreen may have broken in A"}
+{"pair_id": "3327485328-3349343874", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "formatting improvement"}
+{"pair_id": "3969257991-3989380318", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "airforce routing may come from A"}
+{"pair_id": "3831069300-3832038723", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "arg-key bug not from A"}
+{"pair_id": "4072806692-4121251235", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's filters undercounted deliveries"}
+{"pair_id": "3191241151-3214633974", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's endpoint failed on numeric ids"}
+{"pair_id": "3758059997-3758562733", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "spacing polish"}
+{"pair_id": "3420605166-3438434201", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's JSON template misled the model"}
+{"pair_id": "3255005802-3284224378", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3917751951-3917862516", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's inlining produced shapes ClangGen mishandled"}
+{"pair_id": "3948756353-4013245647", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's monitor ignored hot-reload"}
+{"pair_id": "4037599601-4074996296", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "bug from another PR"}
+{"pair_id": "3976578638-4018113484", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3107546749-3107584674", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's nowrap caused overflow"}
+{"pair_id": "3941911807-3941931946", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's literal broke lint CI"}
+{"pair_id": "3955140736-3981490272", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different panel"}
+{"pair_id": "3299177863-3592453945", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3976436817-4050175029", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "new type support"}
+{"pair_id": "3954036326-3955669809", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "cleanup"}
+{"pair_id": "3818696972-3821686692", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's OAuth server leaked on error"}
+{"pair_id": "3941011872-3987222939", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated tab bug"}
+{"pair_id": "4045138139-4057456317", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "concurrent rename, not A"}
+{"pair_id": "4094137142-4098071764", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "later version bump missed goldens"}
+{"pair_id": "4060160941-4171125120", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's proactive requests flooded path requests"}
+{"pair_id": "3744214432-3750334977", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "preexisting subfolder bug"}
+{"pair_id": "3929101915-3941298868", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "timeout scope issue likely predates A"}
+{"pair_id": "3246080664-3288646544", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "new bigint handling"}
+{"pair_id": "3985421661-3985718340", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3151768593-3152052959", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's return rate multiplication wrong"}
+{"pair_id": "4050449168-4069619619", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "race predates A"}
+{"pair_id": "3993865983-4006014171", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3082071079-3083107431", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "unclear origin of init"}
+{"pair_id": "3216482332-3220901642", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "Gemini parsing not from A"}
+{"pair_id": "4075788352-4075935339", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "new retry behaviour"}
+{"pair_id": "3959652876-3971326815", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3455205757-3485283349", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "4079167642-4170111033", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4140606021-4162632571", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "swallowed error predates A"}
+{"pair_id": "3985344599-4012549619", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "design issue predates A"}
+{"pair_id": "3942177836-3946005555", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "review cleanups"}
+{"pair_id": "3945536705-4070342596", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3935168560-3963138789", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "CSP origin unclear"}
+{"pair_id": "4164270443-4165202982", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's docker command broke on metacharacters"}
+{"pair_id": "4065761311-4089315810", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different Windows issue"}
+{"pair_id": "3467470367-3467541573", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's mixed-media fix incomplete"}
+{"pair_id": "3203808250-3205940354", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "drops feature, not a bug fix"}
+{"pair_id": "3300071111-3302697961", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's Nuxt routes and imports broke edit page"}
+{"pair_id": "4004348583-4159731445", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "lenient decoding origin unclear"}
+{"pair_id": "4132227958-4143137959", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "style follow-up"}
+{"pair_id": "3346241640-3428259467", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's tally lacked access control"}
+{"pair_id": "3998228566-4002848572", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "crate rename later"}
+{"pair_id": "3245880945-3247096748", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different bug"}
+{"pair_id": "3361277850-3361536570", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3890891557-3890978465", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "snapshot update"}
+{"pair_id": "3831405553-3831430974", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's routing and endpoint fix incomplete"}
+{"pair_id": "3360408823-3360932534", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A dropped the last comment"}
+{"pair_id": "3248833141-3252914439", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "test harness change"}
+{"pair_id": "3931740776-3944763133", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's FP overrides not reflected in exports"}
+{"pair_id": "3765315643-3765626188", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "formatting"}
+{"pair_id": "3244903354-3247180969", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3567636384-3601731836", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "automated fixes may have broken imports"}
+{"pair_id": "4102086531-4120154195", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "B says bugs were introduced by A's shell profiles"}
+{"pair_id": "4081508573-4083625656", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3658256256-3670005030", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "new sync behaviour"}
+{"pair_id": "4032053381-4043283042", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "StateTree property fix may be from A"}
+{"pair_id": "3801790863-3803238627", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "style consistency"}
+{"pair_id": "3345532816-3345690563", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A referenced undefined variable, broke build"}
+{"pair_id": "3357168712-3362296678", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different feature"}
+{"pair_id": "3396080776-3396326857", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "version bump"}
+{"pair_id": "3846020399-3854557675", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3370218094-3373565030", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's DateTime.Now capture made search flaky"}
+{"pair_id": "3246143472-3321567165", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "new map allocation"}
+{"pair_id": "3799611580-3803191585", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's debug strings used RAM, flagged in review"}
+{"pair_id": "4129335494-4174711642", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "adds a warning for a different case"}
+{"pair_id": "3765476246-3779034309", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "missing tools predate A"}
+{"pair_id": "3898740360-3939635553", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's auto-generated names skipped validation"}
+{"pair_id": "3762224899-3772053818", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "extends move tracking"}
+{"pair_id": "3381361654-3381829072", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "UX polish"}
+{"pair_id": "3210630837-3226464508", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "index handling extension"}
+{"pair_id": "3994666552-4010646980", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "separate perf change"}
+{"pair_id": "4071989556-4124201986", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "adds cleanups elsewhere"}
+{"pair_id": "3392032901-3395979315", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated primitive"}
+{"pair_id": "4054729717-4066114742", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "compliance notes only"}
+{"pair_id": "4001445637-4163763834", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated schema cleanup"}
+{"pair_id": "4133222323-4141831301", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "SDK rename later"}
+{"pair_id": "3732669701-3737552466", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "unrelated"}
+{"pair_id": "3942607087-3980828428", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "auth header missing before A"}
+{"pair_id": "3985381130-4034430497", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3800563748-3824044054", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "policy change"}
+{"pair_id": "4175073479-4175238540", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's resend fix incomplete"}
+{"pair_id": "4041203162-4047395770", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's timing detector broke indentation"}
+{"pair_id": "4057828464-4087652632", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A's limit too low or just tuning"}
+{"pair_id": "3226141867-3238386641", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "outer join may have broken in A"}
+{"pair_id": "3426368260-3478144688", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "settings refactor dropped --slow"}
+{"pair_id": "3291886027-3361539337", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4041579688-4078173611", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "UI fixes unrelated to lint change"}
+{"pair_id": "3992880097-3997152523", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "stale refs from another deletion"}
+{"pair_id": "4057993510-4068357516", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's migration created a second alembic head"}
+{"pair_id": "3792383639-3806172480", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "extends attribute coverage"}
+{"pair_id": "4155287587-4167912179", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "lint from a different PR"}
+{"pair_id": "4141312915-4153149192", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated i18n"}
+{"pair_id": "4041253604-4058128091", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "new rescheduling behaviour"}
+{"pair_id": "3936750049-3955636640", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "policy change for 429s"}
+{"pair_id": "3299534540-3309430149", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "typst bug may come from refactor"}
+{"pair_id": "4070962624-4163763834", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated schema cleanup"}
+{"pair_id": "3201244710-3201596945", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "preexisting tsconfig path"}
+{"pair_id": "4082284303-4088234259", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "codebase-wide windows fix"}
+{"pair_id": "3305131905-3386091216", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated timeout"}
+{"pair_id": "4038752687-4136193138", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's headers missing from swarm broadcast"}
+{"pair_id": "4000666471-4054902822", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated diff parsing"}
+{"pair_id": "3934276538-3934297045", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "copy tweak"}
+{"pair_id": "4078575845-4141021920", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's capacity calc could overflow"}
+{"pair_id": "4164371105-4164424534", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's limits caused false positives"}
+{"pair_id": "4059678150-4069819670", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's loop guard incomplete"}
+{"pair_id": "3919835088-3923291871", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's migration broke DualState clone"}
+{"pair_id": "3702264432-3750828319", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated shutdown"}
+{"pair_id": "3729006434-3941819301", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's connect link skipped saving settings"}
+{"pair_id": "4014352340-4018373143", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "review findings on A's vault code"}
+{"pair_id": "4057670349-4070015370", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's flattened tool summaries caused hallucinations"}
+{"pair_id": "3939978389-3951908658", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "broken imports from another deletion"}
+{"pair_id": "3686428206-3769179483", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "test update after another refactor"}
+{"pair_id": "3989838180-4111781129", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "style cleanup"}
+{"pair_id": "3909939308-3912745589", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "more perf cleanup"}
+{"pair_id": "3454593469-3460172933", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "label duplication predates A"}
+{"pair_id": "4158699644-4176523990", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's premature deprecation warning reverted"}
+{"pair_id": "4095365977-4096727951", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated crash"}
+{"pair_id": "3580191916-3627694738", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "hardcoded slug predates A"}
+{"pair_id": "4005871322-4031775232", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3081555677-3214546649", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "dark-mode colour origin unclear"}
+{"pair_id": "3348840848-3357222470", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different primitive"}
+{"pair_id": "4105549771-4105816541", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's stdin path skipped validation"}
+{"pair_id": "4110584364-4114362565", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's hook missing for define_singleton_method"}
+{"pair_id": "4115213693-4141532755", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different leak"}
+{"pair_id": "3846880873-3871662764", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "reverted change may be in A"}
+{"pair_id": "3212805330-3217556206", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "permission crash may stem from A"}
+{"pair_id": "3871944533-3895331280", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "new media support"}
+{"pair_id": "3836435462-3845259935", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "completes a feature"}
+{"pair_id": "4090278798-4092876221", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's search passed unsafe FTS syntax"}
+{"pair_id": "4136770161-4149887240", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "spec alignment"}
+{"pair_id": "3750763063-3750855743", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different SQL bug"}
+{"pair_id": "3425349105-3437699184", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A required an excluded file"}
+{"pair_id": "4053093641-4054641062", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different list rule"}
+{"pair_id": "4069440931-4094860540", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A's unlock was a no-op"}
+{"pair_id": "4077714498-4085897257", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3200278430-3218831249", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "navigation tweak"}
+{"pair_id": "3785272219-3879841283", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "task caching bug predates A"}
+{"pair_id": "3811013690-3848987306", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "CLI-wide feature"}
+{"pair_id": "4008237673-4078719349", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's shape changes duplicated cell images"}
+{"pair_id": "3648420591-3686388265", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3903700793-3949183157", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.95, "reason": "lockfile only"}
+{"pair_id": "3273905750-3324596733", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated colour"}
+{"pair_id": "3916645304-3955636640", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "policy change"}
+{"pair_id": "3370957817-3388246044", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's new imports created a cycle"}
+{"pair_id": "3703695092-3765583964", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "OOM may stem from A's schema updates"}
+{"pair_id": "3327430959-3381219824", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "accidental nested clone may be from A"}
+{"pair_id": "3869312002-3884323379", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's hints never fired due to code mismatch"}
+{"pair_id": "3720080908-3785976193", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "log message context"}
+{"pair_id": "4007798283-4007797981", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "separate hardening"}
+{"pair_id": "3266754524-3266964328", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3515387628-3554175544", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's RTU support failed on Arduino"}
+{"pair_id": "3203612130-3203904490", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A pointed to wrong Pyodide version"}
+{"pair_id": "3325554621-3328069468", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different feature"}
+{"pair_id": "3616238813-3620741570", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "different indentation case"}
+{"pair_id": "3302550050-3321567165", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different feature"}
+{"pair_id": "4053411769-4053424553", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "CI review issues may come from merged PRs"}
+{"pair_id": "4076907166-4113084166", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "race predates A"}
+{"pair_id": "4103816078-4111782765", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "crash origin unclear"}
+{"pair_id": "3107304372-3121432614", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's required fields broke tests"}
+{"pair_id": "3765409360-3792439950", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4016378362-4109214554", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's cancellation left task cancelled"}
+{"pair_id": "4120185464-4137950159", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "test assertion fixes likely unrelated to clippy"}
+{"pair_id": "4072064320-4072901958", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "psql parity features"}
+{"pair_id": "4074403658-4114369646", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "preexisting operator bug"}
+{"pair_id": "3990257773-4003647552", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "UX enhancement"}
+{"pair_id": "3443918595-3484255819", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "migration feature"}
+{"pair_id": "3135734575-3199302401", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A left unused imports"}
+{"pair_id": "4092049147-4102919636", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "heuristic tuning"}
+{"pair_id": "3871102596-3920557804", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's tarballDir included tarball in package"}
+{"pair_id": "3689895221-3699001674", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "overflow may stem from refactor"}
+{"pair_id": "4032248087-4077860924", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "formatter did not cause selector bug"}
+{"pair_id": "4135162401-4150198971", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's preview iframe showed notifications"}
+{"pair_id": "3940226310-3981556972", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "consistency polish"}
+{"pair_id": "3950759028-3986350414", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated save behaviour"}
+{"pair_id": "4092892232-4092911611", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.95, "reason": "A's migration used CONCURRENTLY in a transaction"}
+{"pair_id": "4076637696-4087714101", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's validation prompt flagged false positives"}
+{"pair_id": "3728381281-3771665314", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "formatting only"}
+{"pair_id": "4110634759-4111451367", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A added invalid JSON"}
+{"pair_id": "3979336370-3994945652", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3974436654-3974517937", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "same SDK upgrade, unclear"}
+{"pair_id": "3815336078-3815549350", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "isolation hardening"}
+{"pair_id": "4034974301-4044257228", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "new mechanism"}
+{"pair_id": "4088125506-4088453923", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "polish"}
+{"pair_id": "4086900988-4089673001", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "metric change"}
+{"pair_id": "4180187949-4181079638", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "other approval issues"}
+{"pair_id": "4078266100-4089747375", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated types"}
+{"pair_id": "4049403431-4097282497", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A marked AWQ compatible on any CUDA GPU"}
+{"pair_id": "3929430823-4008188249", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated hex casing"}
+{"pair_id": "3912072564-3995764283", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated flag"}
+{"pair_id": "3095242861-3102498336", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3969951676-4079686800", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3100285488-3133977496", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's imported metadata not coerced"}
+{"pair_id": "3980553660-4159731445", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's MCP decoders silently defaulted"}
+{"pair_id": "4020164930-4081067262", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "content removal"}
+{"pair_id": "3155176205-3158825591", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's Clojure loops missing parens"}
+{"pair_id": "3729868456-3730107582", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's release imported optional dep eagerly"}
+{"pair_id": "3462092381-3483564709", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "4012040481-4063368768", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "plaintext creds predate A"}
+{"pair_id": "3860403093-3860606326", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "dropdown component swap"}
+{"pair_id": "4079804948-4079686800", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3751362264-3762745221", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "error type issue predates A"}
+{"pair_id": "3871877376-3898868117", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different fullscreen bug"}
+{"pair_id": "3247845508-3249413284", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's group-join keys wrong"}
+{"pair_id": "3795518944-3824831753", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's example broke under default mode"}
+{"pair_id": "3414941743-3483807972", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated swagger bug"}
+{"pair_id": "3463457025-3520580374", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different crash"}
+{"pair_id": "3909840943-3912809471", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's call passed arg to zero-arg function"}
+{"pair_id": "3271714089-3306808419", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "wizard bug origin unclear"}
+{"pair_id": "4060261388-4082260800", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "drop runtime issue"}
+{"pair_id": "3882015824-3885564385", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "CI port conflicts"}
+{"pair_id": "3909877947-3911978300", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A read inbox by name, messages invisible"}
+{"pair_id": "3146373511-3146400791", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's solution used wrong constructors"}
+{"pair_id": "3261822428-3262986366", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "new else-if support"}
+{"pair_id": "3750475169-3775429787", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's escaped pipes rendered wrong"}
+{"pair_id": "3868590474-3938171627", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's replaces handling was order dependent"}
+{"pair_id": "3934200324-4023897530", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "watch handler bug predates A"}
+{"pair_id": "3955066021-4012506327", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "streaming order unrelated"}
+{"pair_id": "3297792808-3297771831", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "backspace bug separate"}
+{"pair_id": "4032200094-4048912267", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "data fix"}
+{"pair_id": "3252168752-3252665986", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "new slicing support"}
+{"pair_id": "3628412902-3633248816", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "different country"}
+{"pair_id": "3932220799-3959864195", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "hook bug separate"}
+{"pair_id": "3249414492-3261858484", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's switch broke the mochix build"}
+{"pair_id": "4078258863-4087001522", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "broken link origin unclear"}
+{"pair_id": "3704657685-3762448826", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "removed function may predate A"}
+{"pair_id": "3765225272-3778583422", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "schema hardening"}
+{"pair_id": "3418716410-3423731794", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "podman issue"}
+{"pair_id": "3807618839-3807855631", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's cleanup script needed bash"}
+{"pair_id": "4019513723-4110022644", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3577061706-3577151541", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's canvas context broke eraser"}
+{"pair_id": "4007944222-4089315810", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "Windows issues separate"}
+{"pair_id": "3791179840-3803034934", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "different validation bug"}
+{"pair_id": "3991127176-4032409811", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "4025001882-4025207945", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "race separate"}
+{"pair_id": "4007948558-4151456464", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "layout polish"}
+{"pair_id": "3078892331-3087976702", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's tool structure broke legacy format"}
+{"pair_id": "3929831648-3934395797", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3583390830-3583562245", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A checked the wrong context"}
+{"pair_id": "3841286393-3933748848", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "prefix redaction origin unclear"}
+{"pair_id": "4075713942-4098236065", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's streaming change doubled responses"}
+{"pair_id": "3857408419-3857702731", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "translation issue may come from A"}
+{"pair_id": "3271924289-3272579193", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different conversion"}
+{"pair_id": "3312849370-3323902027", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different slicing case"}
+{"pair_id": "3902580291-3902695357", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "test logic predates A"}
+{"pair_id": "3825608042-3839168313", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's cache condition ignored task tools"}
+{"pair_id": "3973460158-3975304702", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "missing release artifacts"}
+{"pair_id": "3299755982-3303676062", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different type issue"}
+{"pair_id": "4140679885-4142781877", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "double-click bug separate"}
+{"pair_id": "3772545733-3779365899", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A left wrong path and unused import"}
+{"pair_id": "3775056385-3777155949", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "league bug separate"}
+{"pair_id": "3962978608-4047435965", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3762429702-3772053818", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "different analysis"}
+{"pair_id": "3287225497-3304008469", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "removal of command"}
+{"pair_id": "3256121364-3260612229", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's parseIntStr rejected one-arg calls"}
+{"pair_id": "4100960476-4105988542", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "next migration step"}
+{"pair_id": "3147212600-3147251928", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's solution did not work"}
+{"pair_id": "3170071085-3176826904", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "style polish"}
+{"pair_id": "3483167463-3483342331", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's readiness check mishandled async"}
+{"pair_id": "3253986318-3270147827", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "version choice change"}
+{"pair_id": "3973600818-3976030930", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "other divergences"}
+{"pair_id": "3387843122-3387924412", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's template left a blank line"}
+{"pair_id": "4019688949-4023236293", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated CORS"}
+{"pair_id": "3507574009-3541042879", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "data-loading change"}
+{"pair_id": "3848020740-3983291845", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's templates had invalid JSON"}
+{"pair_id": "3799373999-3812695310", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "subfolder bug separate"}
+{"pair_id": "4078076679-4159809636", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "4099665078-4120479567", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "version bump goldens"}
+{"pair_id": "4085607390-4088251319", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A used insecure nonce"}
+{"pair_id": "4122515276-4153592591", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "db pool use may come from A"}
+{"pair_id": "3903991413-3939932074", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's check skipped reranking"}
+{"pair_id": "4054094522-4055390548", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "lens bug separate"}
+{"pair_id": "3648209499-3668459115", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3821507661-3821547875", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A removed generalization check"}
+{"pair_id": "4149002805-4065413575", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "CTE bypass predates A"}
+{"pair_id": "3912777146-3957021753", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4123811017-4140546158", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "later version bump"}
+{"pair_id": "4014198946-4033619209", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's broad regex gave false positives"}
+{"pair_id": "3287543377-3287468935", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3320900257-3326829693", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "disposal issue related, unclear origin"}
+{"pair_id": "3775291812-3817143560", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3555568307-3573908674", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "deprecated models"}
+{"pair_id": "3249276997-3249470945", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's CSP hash fix insufficient"}
+{"pair_id": "3834373662-3963691442", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "docs fix"}
+{"pair_id": "3779040167-3877118827", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3903174335-3903385084", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A changed sort order and broke timeline"}
+{"pair_id": "4029510297-4078429652", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's devenv v2 upgrade left orphan processes"}
+{"pair_id": "3367293067-3369395904", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "jump metadata may have broken in refactor"}
+{"pair_id": "3625849871-3633248816", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "different country"}
+{"pair_id": "4078956496-4079064292", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's worktree change allowed nested worktrees"}
+{"pair_id": "3687682130-3738576986", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "metadata formats may stem from A"}
+{"pair_id": "4025838123-4078719349", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "docs cleanup"}
+{"pair_id": "3250710489-3259554833", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different feature"}
+{"pair_id": "3130234830-3130329340", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's regex caused redirect loop"}
+{"pair_id": "3286867683-3286839455", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different deploy issue"}
+{"pair_id": "3991624981-4006569621", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3595521421-3602296337", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "category bug may come from A"}
+{"pair_id": "4083552055-4116976922", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "audit fixes"}
+{"pair_id": "3245843217-3327979429", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "int cast predates A"}
+{"pair_id": "4035159675-4101658720", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A passed a GCP-only arg to AWS module"}
+{"pair_id": "3696181241-3697711263", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "tool never worked"}
+{"pair_id": "3807984268-3890021746", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "diagnostics addition"}
+{"pair_id": "3905315059-3955781823", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different cache issue"}
+{"pair_id": "3892017288-4011740634", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "later refactor made function unused"}
+{"pair_id": "3943942835-3972085911", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "exit bug separate"}
+{"pair_id": "4167963068-4168073219", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "label rename"}
+{"pair_id": "4098236065-4139094766", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "new digest flow"}
+{"pair_id": "3930547711-3932091100", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "zombie processes separate"}
+{"pair_id": "3932570572-3949352738", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "rename"}
+{"pair_id": "4103863706-4131731819", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated crash"}
+{"pair_id": "3262986366-3266971562", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3428076460-3462443555", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "lifecycle optimisation"}
+{"pair_id": "3928957651-4079531720", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "prompt workflow addition"}
+{"pair_id": "3248358388-3252752145", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "builtin collision predates A"}
+{"pair_id": "4014521075-4031079047", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "CLI directory bug separate"}
+{"pair_id": "3247742324-3254594064", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3844844865-3853888367", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "UI overlap separate"}
+{"pair_id": "4139211287-4159382865", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "admin change"}
+{"pair_id": "4005464732-4005587402", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "mobile polish"}
+{"pair_id": "3882001942-3896123755", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's config param dropped chart data"}
+{"pair_id": "3144505506-3145478017", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's solver did not return board"}
+{"pair_id": "3321035880-3321567165", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different map case"}
+{"pair_id": "3835016891-4003778731", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "generator bug"}
+{"pair_id": "3779505015-3780365752", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's neon driver types incompatible"}
+{"pair_id": "3365532247-3366971537", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "metadata bug separate"}
+{"pair_id": "3462051293-3493767210", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "header redesign"}
+{"pair_id": "3839624351-3867315182", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "other Monaco errors"}
+{"pair_id": "3913985179-3933276025", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "goals bug separate"}
+{"pair_id": "3308208847-3309926867", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "trigger cleanup"}
+{"pair_id": "3245851618-3258678304", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3952761838-3962574891", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "engine creation bug predates A"}
+{"pair_id": "3150774091-3152121780", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different compiler bug"}
+{"pair_id": "4015156442-4148924511", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "race introduced by A's lock chaining"}
+{"pair_id": "4137997343-4142511455", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "argv limit predates A"}
+{"pair_id": "3621378040-3664137990", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3919703149-3919997569", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "PATH helper may come from A"}
+{"pair_id": "3198060929-3198455222", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "NULL handling separate"}
+{"pair_id": "3948616874-3951604866", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3930861962-4031903956", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4041309695-4041684770", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "mypy errors may come from A"}
+{"pair_id": "3789226592-3975931999", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's benefit formula wrong"}
+{"pair_id": "3822505219-3908163486", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's exports broke pattern"}
+{"pair_id": "3860606326-3860679703", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's picker bindings left it empty"}
+{"pair_id": "3267643479-3316827315", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's entrypoint had a variable typo"}
+{"pair_id": "3756237353-3783614867", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "history sync separate"}
+{"pair_id": "3762421640-3765031563", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's inout codegen panicked on write-only"}
+{"pair_id": "4141871085-4152330732", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "site-wide naming consistency"}
+{"pair_id": "3806183637-3806632533", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's PostHog init raced"}
+{"pair_id": "3622010408-3699445030", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's refactor dropped SafeURL"}
+{"pair_id": "3603501472-3603513769", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's modal fix incomplete"}
+{"pair_id": "4013801483-4015962428", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A used wrong plugin marketplace id"}
+{"pair_id": "3309889525-3367180033", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3778730146-3779718102", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "extends normalisation"}
+{"pair_id": "4043343933-4054731661", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3244903372-3299379943", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature extension"}
+{"pair_id": "3810640247-3857231794", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "review issues in A's module"}
+{"pair_id": "3799117481-3887351306", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3984787560-4011041539", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "newer CVE bump"}
+{"pair_id": "3753564486-3793402364", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3334006883-3334073305", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A filtered after paging"}
+{"pair_id": "3783425364-3825144159", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "Windows path issue separate"}
+{"pair_id": "3750559169-3790154543", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "bug from another PR"}
+{"pair_id": "3460321316-3500080438", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "compile behaviour change"}
+{"pair_id": "3285832798-3321473239", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different lookup case"}
+{"pair_id": "3953789863-3954899804", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "same fix applied elsewhere"}
+{"pair_id": "3775703923-3777367571", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "empty output handling gap"}
+{"pair_id": "3223379169-3223842466", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "prefill sampling may have broken in refactor"}
+{"pair_id": "3952729957-3968543639", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "test timeouts"}
+{"pair_id": "3707392714-3739634323", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "setting not respected predates A"}
+{"pair_id": "3809945556-3811140163", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "prompt architecture issue"}
+{"pair_id": "3981689407-4138396151", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "agent-specific failures"}
+{"pair_id": "3283209926-3324596733", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3183586106-3201339033", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's pagination missed context_get default"}
+{"pair_id": "3636626535-3656949759", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3435450616-3435526467", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's header macros broke"}
+{"pair_id": "4161579296-4161782105", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A logged every retry"}
+{"pair_id": "4002634896-4013194506", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's autocomplete keyboard gaps"}
+{"pair_id": "4086249949-4100425904", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different error path"}
+{"pair_id": "4075639734-4077558364", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A added erroneous use client"}
+{"pair_id": "4160826733-4162994291", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "truncation storage separate"}
+{"pair_id": "3846370195-3846385185", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3986240227-4024579267", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3120510885-3127938387", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "cache refresh separate"}
+{"pair_id": "4030004520-4182954006", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "relaxes requirement"}
+{"pair_id": "3881737261-3881826912", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3370218694-3373565030", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "flaky test from other PR"}
+{"pair_id": "3216467077-3217930208", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "group scope bug may come from A"}
+{"pair_id": "3589960601-3591142522", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "runner field separate"}
+{"pair_id": "3874566665-3874737040", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "layout polish"}
+{"pair_id": "3430074446-3513843519", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's flexsurv prediction used wrong data"}
+{"pair_id": "3960002152-4046697348", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3913052798-3939849583", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "flaky tests separate"}
+{"pair_id": "4077312999-4077470415", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A matched installed skills by name only"}
+{"pair_id": "4054470049-4060710862", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "cost source may be A's choice"}
+{"pair_id": "3932947074-3956278461", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "visibility issue separate"}
+{"pair_id": "3579498874-3610252816", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's landing page not translated"}
+{"pair_id": "3266407818-3285967271", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3972996947-3983009952", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's channel missed context fields"}
+{"pair_id": "3937286237-3937857327", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A's execSync threw on pm2 output"}
+{"pair_id": "3945676739-3953071530", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "zone rename"}
+{"pair_id": "3832574844-3833037747", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "extends whitespace handling"}
+{"pair_id": "3890274732-3891048121", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "snapshot"}
+{"pair_id": "4048134604-4156408119", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's MCP server missed TestRunner and graphs"}
+{"pair_id": "3247356096-3258086105", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different feature"}
+{"pair_id": "3777211137-3778583422", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "schema hardening"}
+{"pair_id": "4127383358-4141361785", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "help wording predates A"}
+{"pair_id": "3459967311-3497046363", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4116649539-4161853519", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "metadata may predate A"}
+{"pair_id": "4126741622-4133500413", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A broke alphabetical ordering"}
+{"pair_id": "3485869231-3497046363", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3156154325-3156525088", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "precedence predates A"}
+{"pair_id": "4009530740-4017276848", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "bundling issue separate"}
+{"pair_id": "3702559468-3722465685", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3555584746-3560315828", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's rename detection still broke sync"}
+{"pair_id": "3858170341-3919841883", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3926156644-3971326815", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated schema"}
+{"pair_id": "3944429206-3970417734", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3779625036-3788951682", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's join produced duplicate members"}
+{"pair_id": "3980216461-4002583686", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "diagnostics addition"}
+{"pair_id": "3559754049-3580746887", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "completes interface"}
+{"pair_id": "3751897584-3762588329", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's liveness listed LEA dst as use"}
+{"pair_id": "3868873120-3868894397", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's skill paths wrong"}
+{"pair_id": "4156685474-4156682255", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "validation hardening"}
+{"pair_id": "4023273957-4134894710", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "i18n fallback separate"}
+{"pair_id": "3168541036-3177656584", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "precedence separate"}
+{"pair_id": "3687980475-3775398129", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's detector skipped optional members"}
+{"pair_id": "3855680827-3944038596", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "docs counts"}
+{"pair_id": "3502189041-3603581226", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "bug from another PR"}
+{"pair_id": "3486173434-3497046363", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3987061664-3988978702", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "bug from another PR"}
+{"pair_id": "3661273351-3716784103", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "permission issue separate"}
+{"pair_id": "4017886578-4033525892", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3976042519-3977757694", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's find-node approach broke Windows"}
+{"pair_id": "4151458050-4165946447", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's watcher and cap did not work"}
+{"pair_id": "3640179033-3702959357", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "test locking separate"}
+{"pair_id": "3625323563-3633248816", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "different country"}
+{"pair_id": "3927454715-3933657179", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "perf improvement"}
+{"pair_id": "3303407875-3303879315", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's new package missing from CI publish"}
+{"pair_id": "3925021632-3938178783", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4066765776-4084607338", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's DNS proxy required IPv6"}
+{"pair_id": "3179796271-3246463222", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's offline check was flaky"}
+{"pair_id": "3941565080-3945951386", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "dead code cleanup"}
+{"pair_id": "3898715787-3938726392", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "separate install bug"}
+{"pair_id": "4083268363-4090404664", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's throttle scope hid tier in metrics"}
+{"pair_id": "3912321058-3994071657", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "runtime handling may come from A"}
+{"pair_id": "4068365357-4105075741", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "feature addition"}
+{"pair_id": "3849933320-3852255972", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's regex broke on bash 5.2"}
+{"pair_id": "3774147287-3778781961", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "formatting issues predate A"}
+{"pair_id": "3688455470-3692258049", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "validFields predates A"}
+{"pair_id": "4078546773-4113580654", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "review cleanup"}
+{"pair_id": "4073160840-4119972661", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "symlink gap predates A"}
+{"pair_id": "3252687833-3283738654", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "different feature"}
+{"pair_id": "3445460929-3460172933", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3927319939-3964278285", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4132508604-4136935098", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4029255030-4171397230", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "extra hardening"}
+{"pair_id": "4027691353-4052423135", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "baseline update"}
+{"pair_id": "3867959352-3980926743", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's version toString dropped zeros"}
+{"pair_id": "4097796283-4136703321", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different regression"}
+{"pair_id": "4032108191-4036192512", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's char check crashed on byte terms"}
+{"pair_id": "3750833699-3755693463", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A mishandled --no-interactive"}
+{"pair_id": "3976961258-4038813409", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "missing recovery predates A"}
+{"pair_id": "3830533642-3853903361", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "type refactor"}
+{"pair_id": "3960952091-3962275034", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "overflow unrelated to A"}
+{"pair_id": "3952402477-3962574891", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "refactor continuation"}
+{"pair_id": "4072093863-4082793221", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's migration failed canary deploy"}
+{"pair_id": "4132329080-4165120456", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A's env var went stale after later consolidation"}
+{"pair_id": "3692780433-3756237353", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "different issue"}
+{"pair_id": "4054641202-4054668969", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "dedup key improvement"}
+{"pair_id": "3633843542-3651642045", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "logo handling separate"}
+{"pair_id": "3706592381-3706972851", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "instruction text predates A"}
+{"pair_id": "4073356865-4073682638", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "dummy settings issue separate"}
+{"pair_id": "3867854906-3948519304", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "watch mode bug separate"}
+{"pair_id": "3599293783-3604111554", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's default React import broke compile"}
+{"pair_id": "3897700161-4019805353", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "SHA pinning feature"}
+{"pair_id": "3246001820-3250274318", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3966075576-3966876986", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3306146843-3309080439", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate indexing bug"}
+{"pair_id": "3766751504-3769291598", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate cast bug"}
+{"pair_id": "4057993742-4068357516", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's down_revision created multiple heads"}
+{"pair_id": "3919808073-3919883579", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's userconfig path wrong"}
+{"pair_id": "4135043349-4135043716", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4134434658-4149080968", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3831815040-3840795515", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "naming fix separate"}
+{"pair_id": "3552780849-3562752955", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3400229076-3404120106", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "new syntax support"}
+{"pair_id": "4133109331-4133204737", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's OAuth env vars missing in deploy"}
+{"pair_id": "3107204614-3107465583", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "favicon refs may come from A's migration"}
+{"pair_id": "3796541637-3796738732", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "version bump"}
+{"pair_id": "3244903422-3252854830", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "trivial overlap feature work"}
+{"pair_id": "3956571179-3975644381", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "refactor"}
+{"pair_id": "3971557968-4037718038", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "type cleanup"}
+{"pair_id": "3166482079-3166657156", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "parser bug predates A"}
+{"pair_id": "3850335208-3879467629", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3778529438-3876413087", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "precision gate may block A's telemetry"}
+{"pair_id": "3117997172-3118020499", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's locale move lacked root layout"}
+{"pair_id": "4019464055-4180569875", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3877935759-3884724725", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "reverts a different PR"}
+{"pair_id": "4129856853-4129931130", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "footer flash polish"}
+{"pair_id": "4156184856-4180327855", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "scaling improvement"}
+{"pair_id": "3985828120-4096416798", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3854122017-3854134051", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "generated file"}
+{"pair_id": "4048484867-4082596540", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3473576393-3473615851", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A broke indentation"}
+{"pair_id": "3969746183-3976957301", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different issue"}
+{"pair_id": "3772106363-3772676960", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "legacy files issue"}
+{"pair_id": "3941173003-3941514909", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "HiDPI predates A"}
+{"pair_id": "3438222225-3438592009", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's dependency check failed on Windows"}
+{"pair_id": "4075237454-4104034771", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "version line"}
+{"pair_id": "3459579404-3485294875", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "improvement"}
+{"pair_id": "4124479700-4124503174", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's default returned wrong language"}
+{"pair_id": "3764954715-3772053818", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3721017992-3721278936", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A used function before declaration"}
+{"pair_id": "3797053800-3875198040", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's semver parse crashed on catalog versions"}
+{"pair_id": "3944780266-3945136663", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "formatting"}
+{"pair_id": "3932564746-3935371251", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "fill gap may come from A"}
+{"pair_id": "4049222688-4089982904", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "task tracking improvement"}
+{"pair_id": "3596258548-3597456430", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's text transfer toast said FILE"}
+{"pair_id": "3901858321-3912988459", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's controller failed permanently on missing workspace"}
+{"pair_id": "4055932605-4069145094", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "later server API change"}
+{"pair_id": "3932742573-3942074083", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4046090848-4096831651", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3519986425-3561420674", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3247189184-3253522945", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "4054665714-4068818886", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's justfile migration broke CI target"}
+{"pair_id": "3948960745-4071326064", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3770821527-3771552642", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's refactor broke TS compile"}
+{"pair_id": "4103382108-4180655729", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "consistency polish"}
+{"pair_id": "3244946581-3250274318", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3249962843-3249366603", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "dev experience polish"}
+{"pair_id": "3509851745-3511542281", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's synthetic init timed out"}
+{"pair_id": "3604478006-3776857725", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3923557450-4055449269", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3876327307-3980912738", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's overflow-hidden clipped scroll"}
+{"pair_id": "3592555348-3593562929", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "separate crash"}
+{"pair_id": "4168073219-4169185118", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "label change"}
+{"pair_id": "3889465165-4026244502", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated test fix"}
+{"pair_id": "3291626133-3345777764", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3984829586-4110949714", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4013181014-4052824351", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's port missed lp build dependency"}
+{"pair_id": "3998892247-4009118873", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate queue bug"}
+{"pair_id": "3907072603-3925900437", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "timeout tuning"}
+{"pair_id": "3327980694-3354227436", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's int division truncation wrong"}
+{"pair_id": "3690601201-3698404768", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "responsive layout"}
+{"pair_id": "4067464300-4110694076", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3467847461-3467911156", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's audio fetch hit CORS"}
+{"pair_id": "3697197319-3763865694", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "completion regression may come from cleanup"}
+{"pair_id": "4079781657-4081973096", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's break skipped call 3"}
+{"pair_id": "3649968819-3670228833", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3532367455-3652922370", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "unrelated"}
+{"pair_id": "3303205521-3307124555", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "separate typst bug"}
+{"pair_id": "3254575936-3259932599", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "4029310344-4066164812", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "exports cleanup"}
+{"pair_id": "4053396196-4054986275", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's error_id missing for raw exceptions"}
+{"pair_id": "4070638284-4092418846", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's OAuth export template wrong"}
+{"pair_id": "3221635143-3226464508", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate index bug"}
+{"pair_id": "3729696995-3773902832", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "generalisation"}
+{"pair_id": "3298490945-3306808419", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate wizard bug"}
+{"pair_id": "3824170777-3861246044", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3665502097-3667744753", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "root cause predates A"}
+{"pair_id": "3266988027-3285967271", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4109532431-4112819292", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "stale build from another PR"}
+{"pair_id": "3986165001-4028233381", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "missing slot predates A"}
+{"pair_id": "4040992434-4044955539", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's alignment misplaced slogan"}
+{"pair_id": "4106005052-4106111342", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "icon update"}
+{"pair_id": "3396640464-3397047295", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "new syntax support"}
+{"pair_id": "3552697529-3602595774", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3787314312-3815162717", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's fallback query broke big_number charts"}
+{"pair_id": "3826688806-3826779969", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "version line"}
+{"pair_id": "3602446117-3647211779", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "style change"}
+{"pair_id": "3110122221-3119219941", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "enhancement"}
+{"pair_id": "3930646475-3930749038", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "separate bugs"}
+{"pair_id": "4132238216-4134641520", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's bare command tag dropped prompt content"}
+{"pair_id": "3687224023-3706495291", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "layout tweak"}
+{"pair_id": "4061309086-4086334397", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3993279431-4035648054", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "separate parse bug"}
+{"pair_id": "3777819247-3790370307", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "new retry feature"}
+{"pair_id": "3674145953-3761493528", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3926002922-4015689026", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "4051777982-4065650407", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "race predates A"}
+{"pair_id": "3578286357-3580073835", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "refactor"}
+{"pair_id": "3862261671-3866527340", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "product decision"}
+{"pair_id": "3100264490-3148263552", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "refactor"}
+{"pair_id": "3701181802-3750339811", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "test failures may come from A"}
+{"pair_id": "3775178652-3875317995", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3777702496-3779424426", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's module resolution broke intra-directory access"}
+{"pair_id": "4105649577-4105742105", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A read hostname from bind address 0.0.0.0"}
+{"pair_id": "4146640566-4147064152", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "custom header path predates A"}
+{"pair_id": "4038665456-4039192340", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's tool wiring had type errors"}
+{"pair_id": "4035661989-4040194916", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3246679061-3248118415", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's preview hidden behind panels"}
+{"pair_id": "3953075914-4004683620", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A used wrong hook event for Gemini"}
+{"pair_id": "3088559123-3092045675", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3653808614-3653883834", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's player usage broken"}
+{"pair_id": "3907023595-3910402173", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's partial results incomplete"}
+{"pair_id": "4040332413-4048912267", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3248366792-3259554833", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "extension"}
+{"pair_id": "3944215482-4025283377", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3389983566-3399004110", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "tool definitions mismatch"}
+{"pair_id": "3676827543-3689097847", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "unit choice in A"}
+{"pair_id": "3267930831-3275786309", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "logging improvement"}
+{"pair_id": "3878577770-3931066686", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3856707619-3884357719", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "review follow-ups for another PR"}
+{"pair_id": "3645666587-3689200026", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4099300547-4132636572", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate root causes"}
+{"pair_id": "4021278770-4034614367", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "handler predates A"}
+{"pair_id": "3944547455-4007009154", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's pagination param wrong"}
+{"pair_id": "3834061503-3926286712", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different migration"}
+{"pair_id": "3772225110-3799040950", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "build config tweak"}
+{"pair_id": "3773839019-3774529468", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "timestamp bug predates A's logging"}
+{"pair_id": "4099195893-4100350526", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A's auth detection unreliable"}
+{"pair_id": "3695119530-3695483979", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's background mode killed by SIGHUP"}
+{"pair_id": "3801959695-3959381042", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "summary improvement"}
+{"pair_id": "3832666717-3832628815", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "fixes from another PR's review"}
+{"pair_id": "4053380658-4054625964", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's statement_timeout rejected by PgBouncer"}
+{"pair_id": "4036195086-4039369151", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "exclude gap predates A"}
+{"pair_id": "3506639647-3514809768", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4023936258-4027754219", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "extension"}
+{"pair_id": "3764808729-3797346416", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "3830308594-3834022830", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's relay matching suggested implausible nodes"}
+{"pair_id": "3989227961-4096062893", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "feature removal"}
+{"pair_id": "4146464747-4165946447", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "further watcher fixes"}
+{"pair_id": "3252868494-3324202965", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3816424805-3894021275", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's otp flag unsupported by gem release"}
+{"pair_id": "4133233761-4134111718", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "review cleanup"}
+{"pair_id": "3992480227-4060031630", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4084792431-4088032029", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's byte slicing panics on UTF-8"}
+{"pair_id": "3152251805-3172880860", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's arity list had duplicate keys"}
+{"pair_id": "3966204831-4025219455", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "unrelated"}
+{"pair_id": "4034467698-4050631755", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "bug from copied upstream code"}
+{"pair_id": "4117082476-4122275771", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3408032029-3408080841", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "same change reapplied"}
+{"pair_id": "4071251918-4127371369", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "typing refactor"}
+{"pair_id": "3739873236-3739967546", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "skip predates A"}
+{"pair_id": "4076972944-4077037241", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "review cleanups"}
+{"pair_id": "3247724269-3299379943", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3402094207-3459579404", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate improvements"}
+{"pair_id": "4000845045-4005893510", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "staged flag gap predates A"}
+{"pair_id": "4128960568-4170864117", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "hardcoded paths predate A"}
+{"pair_id": "3660091688-3660154226", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A left malformed hash lines"}
+{"pair_id": "4100084068-4106928527", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "exception gap predates A"}
+{"pair_id": "4163766675-4163799548", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's verse detection missed opening verses"}
+{"pair_id": "3714768947-3714752736", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3543220557-3609889060", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3894115354-3944847826", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4022424127-4051578824", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's layout overlapped deep trees"}
+{"pair_id": "3945743078-3956655327", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3901132301-3901425222", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "fallback predates A"}
+{"pair_id": "3998787872-4013235048", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "refactor"}
+{"pair_id": "3298713304-3298839137", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate codegen issues"}
+{"pair_id": "3467911156-3471971646", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's proxy URL failed with credentialed origins"}
+{"pair_id": "4032983997-4034469352", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "todoist gap predates A"}
+{"pair_id": "3484715205-3553086663", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "CI config polish"}
+{"pair_id": "3970923900-3999479815", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "different handler"}
+{"pair_id": "3971349839-3989326299", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "race predates A"}
+{"pair_id": "4089544585-4111245385", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "error message improvement"}
+{"pair_id": "3950263406-3972460231", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4039978474-4055690764", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4121808943-4122275771", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4061184882-4061386464", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "overlapping seam work"}
+{"pair_id": "3785503040-3785515872", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "bug predates the revert"}
+{"pair_id": "3165104135-3165133501", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3214614781-3228872282", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "separate endpoint"}
+{"pair_id": "3926251212-3971326815", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3970486000-3993706146", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "null_pos predates A"}
+{"pair_id": "3800950882-3802574617", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3479686101-3497773278", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "logging consistency"}
+{"pair_id": "3321550520-3350134211", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "separate case"}
+{"pair_id": "4090829992-4159319032", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3088163448-3091890472", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "error handling feature"}
+{"pair_id": "3081897848-3084361418", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3971035781-4017940834", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "seed order issue"}
+{"pair_id": "3961656168-3962083989", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "global path predates A"}
+{"pair_id": "3247707166-3266964328", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3874983030-3890451861", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "layout polish"}
+{"pair_id": "3586134309-3643084571", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3775727695-3777436613", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "robustness change"}
+{"pair_id": "4030259139-4032623662", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "container duplication may come from A"}
+{"pair_id": "3929737479-3978986836", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "regression from another commit"}
+{"pair_id": "4123933024-4155164429", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's auto-registration missed schema reset"}
+{"pair_id": "4041975165-4042018031", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "refactor"}
+{"pair_id": "4098821117-4162801953", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3714850284-3714752736", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3872675419-3872761137", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A's page crashed site at load"}
+{"pair_id": "3645820430-3646578165", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "duplicate change"}
+{"pair_id": "4099158036-4119201398", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A used reserved permission name"}
+{"pair_id": "3702083591-3723507151", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "logging tweak"}
+{"pair_id": "4116922080-4122249386", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A's approach reversed as wrong"}
+{"pair_id": "3455726888-3542731526", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "lockfile"}
+{"pair_id": "3924788204-3934059272", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's merged block dropped prompt"}
+{"pair_id": "3725019372-3743623223", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "lockfile bump"}
+{"pair_id": "3973592996-3984424045", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "shim cleanup"}
+{"pair_id": "3768369069-3770175728", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3971282208-3978111879", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "rename predates A"}
+{"pair_id": "4073423191-4092223760", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "feature"}
+{"pair_id": "3997098505-4097238244", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3911199796-3912862600", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4014124902-4014229750", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's switching left stale session path"}
+{"pair_id": "3654663570-3654698698", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "extension to date token"}
+{"pair_id": "3980830527-4086010488", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "separate path issue"}
+{"pair_id": "3610838096-3610986058", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's absolute cursor positioning broke after scroll"}
+{"pair_id": "3949991143-3952829622", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A used stale reply field"}
+{"pair_id": "3857605665-3857702731", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3367494724-3407930184", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4174506080-4175204231", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's partition fix wrong"}
+{"pair_id": "3848035491-3873078918", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "separate detection bug"}
+{"pair_id": "3128673835-3195738163", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "logging change"}
+{"pair_id": "4063491283-4105340795", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4084196982-4089039623", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "lockfile"}
+{"pair_id": "4148992681-4155812806", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A's rewrite dropped architecture edges"}
+{"pair_id": "3929338411-3945921551", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4006945514-4015746634", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's sidecar skills dir invisible to agents"}
+{"pair_id": "3377897448-3382991546", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4173056618-4173118372", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "dependency bump"}
+{"pair_id": "3951862829-3970337042", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's schema failed structured output validation"}
+{"pair_id": "3504908034-3511460424", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "chain bug may predate A"}
+{"pair_id": "4133787352-4149025065", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "absolute symlinks predate A"}
+{"pair_id": "3762351474-3763431169", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's tar step failed on Windows"}
+{"pair_id": "3968645570-3985843084", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "design change"}
+{"pair_id": "4022216335-4027754219", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3248671454-3276502995", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "dependency file"}
+{"pair_id": "4111383185-4128252517", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate filter bug"}
+{"pair_id": "4105695332-4180655729", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "more consistency polish"}
+{"pair_id": "3988070153-3990729965", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "separate engine bugs"}
+{"pair_id": "3852151006-3882749751", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's bd list flags wrong"}
+{"pair_id": "4074418649-4074560919", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3250193824-3251522453", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's json printing broke dataclass lists"}
+{"pair_id": "3997424357-4064633059", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "security hardening"}
+{"pair_id": "4111309805-4116118608", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "dropdown positioning"}
+{"pair_id": "3806926694-3853417902", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "separate crash"}
+{"pair_id": "3676489460-3684320145", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "4038031760-4054583604", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's per-item loose decision inconsistent"}
+{"pair_id": "3813842528-3840066667", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "schema hardening"}
+{"pair_id": "4055651554-4057456317", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "other PR's naming"}
+{"pair_id": "3249323004-3252229038", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "streaming follow-up"}
+{"pair_id": "3307405622-3320604524", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "wrapping gap predates A"}
+{"pair_id": "3245982620-3321398701", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3836785807-3886318968", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3735465779-3735476809", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3246466891-3253522945", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "4126410799-4131949231", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A's label inaccurate"}
+{"pair_id": "3852214033-3872062629", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3987066570-3990895831", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "initial volume gap predates A"}
+{"pair_id": "3882184663-3904195021", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3519807457-3528819336", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's sort broke on missing metadata"}
+{"pair_id": "3702193811-3702430049", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's widgets not draggable"}
+{"pair_id": "3417909730-3422592699", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "tracked-only design gap"}
+{"pair_id": "4052383542-4106611849", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate grouping bug"}
+{"pair_id": "3357222470-3358516396", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's dispatch blocks wrong"}
+{"pair_id": "3075016326-3075195284", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's launcher defaults wrong"}
+{"pair_id": "3828629598-3943615536", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "4033444389-4041035407", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "filter logic gap"}
+{"pair_id": "4079374617-4098217571", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "behaviour change"}
+{"pair_id": "3984578217-3999291566", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A removed cleanup causing stale data errors"}
+{"pair_id": "3954835569-4143876460", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3629085845-3637922375", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "routing may come from A"}
+{"pair_id": "4016824484-4027730990", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's format path ignored threshold styles"}
+{"pair_id": "4181138359-4181159870", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "tests"}
+{"pair_id": "3919481546-3951259197", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "refactor"}
+{"pair_id": "3370609789-3391537564", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "CI path"}
+{"pair_id": "3819202695-3851797437", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "behaviour change"}
+{"pair_id": "3787088499-3831793500", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "retry gap predates A"}
+{"pair_id": "4105523752-4115384924", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "separate link bug"}
+{"pair_id": "4074588595-4093813366", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's rewritten block query broke on hypertable"}
+{"pair_id": "3485961587-3513482473", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3897520630-3898690805", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "new recovery feature"}
+{"pair_id": "3664497490-3677858112", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "extension"}
+{"pair_id": "4043224680-4044306642", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "UI improvements"}
+{"pair_id": "3862458385-3866270139", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3972807884-3974917494", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "shim deletion"}
+{"pair_id": "3947119929-3948426222", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3181030935-3181495932", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's liveness dropped append registers"}
+{"pair_id": "3154255054-3156353628", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate variable issue"}
+{"pair_id": "3452195672-3485042954", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3607794588-3662899555", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "lockfile"}
+{"pair_id": "3973177433-3976060021", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "golden from another change"}
+{"pair_id": "4080414456-4085984173", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "scope gap predates A"}
+{"pair_id": "4066494311-4113011538", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3967013768-3983858079", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3966617156-4042372141", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "ordering may come from A's saving"}
+{"pair_id": "3792131364-3794431308", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "architecture rework"}
+{"pair_id": "3849092126-3858257461", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4111217346-4113976264", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "sweep may fix A's code"}
+{"pair_id": "3023207376-3023211497", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3752027604-3755702738", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A inverted the key condition"}
+{"pair_id": "3153518865-3153619921", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's generated tabs broke fsi"}
+{"pair_id": "3805776148-3860278845", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3271988317-3272268703", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "placeholder cleanup"}
+{"pair_id": "3939890729-4011509285", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "gate improvement"}
+{"pair_id": "4042126391-4042174528", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's observer re-created when visible"}
+{"pair_id": "3088148736-3088677447", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "repeated image events may come from A"}
+{"pair_id": "3703981030-3704559063", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A left malformed cast and stale file list"}
+{"pair_id": "3459932108-3485294875", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "improvement"}
+{"pair_id": "4113217797-4174696443", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3831431900-3858257461", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "unrelated"}
+{"pair_id": "3739904988-3746613499", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "deletion logic separate"}
+{"pair_id": "3819564989-3821690993", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.55, "reason": "layout tweak"}
+{"pair_id": "3245397178-3258759544", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "extension"}
+{"pair_id": "3975646466-3979810678", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "comment gap predates A"}
+{"pair_id": "4093127411-4100317687", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "separate bug"}
+{"pair_id": "3323701013-3324446888", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "simplification"}
+{"pair_id": "4135063075-4135779808", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3918299661-3934783415", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4103917487-4116976922", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "audit cleanup"}
+{"pair_id": "3979089531-3985653007", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "version sync"}
+{"pair_id": "3717475809-3726503678", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "separate tab bug"}
+{"pair_id": "4034550624-4035080063", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's release date wrong"}
+{"pair_id": "4068292094-4070780747", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "efficiency fix"}
+{"pair_id": "3709299363-3708814142", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's tile updates still missed info"}
+{"pair_id": "4112045357-4158709906", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "regression from another change"}
+{"pair_id": "3845972040-3884357719", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "review fixes for A's SSE test sync"}
+{"pair_id": "3932503643-3959481998", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3124620079-3203991539", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "asset update"}
+{"pair_id": "3776923777-3778415487", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "new validation"}
+{"pair_id": "3111013531-3119219941", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "build improvement"}
+{"pair_id": "3836145224-3888190388", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "update recovery feature"}
+{"pair_id": "4050239031-4057456317", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "other PR's naming"}
+{"pair_id": "4055032748-4055129667", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "consistency follow-up"}
+{"pair_id": "3702067048-3716784103", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "A's permissions fix incomplete"}
+{"pair_id": "3665071294-3667783269", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "lockfile"}
+{"pair_id": "3831360042-3886481792", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "composer refactor"}
+{"pair_id": "3839856079-3839854638", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "duplicate change"}
+{"pair_id": "3258963329-3309080439", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3913355233-3956473650", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "type cleanup"}
+{"pair_id": "4087563274-4096321187", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "extension"}
+{"pair_id": "3153677010-3154623896", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A misused early stopping args"}
+{"pair_id": "3895607562-3899777760", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3734703332-3771646791", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "denylist gap predates A"}
+{"pair_id": "4111957609-4113807273", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.85, "reason": "A's grid lambda failed at runtime"}
+{"pair_id": "4021220823-4064291280", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4005137352-4029876179", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "rendering improvement"}
+{"pair_id": "3998614658-4100318055", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3715981584-3714752736", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3966876404-3998530136", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A passed function as Const"}
+{"pair_id": "3848943834-3849663299", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's preload broke env workflows"}
+{"pair_id": "3729337888-3734090845", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "parsing bug predates A's tests"}
+{"pair_id": "3953757978-3953789863", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's fix still crashed"}
+{"pair_id": "4128618043-4130868854", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "layout fix separate"}
+{"pair_id": "3924343990-3990253959", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "reconnect improvement"}
+{"pair_id": "4071589477-4092418846", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's OAuth export template wrong"}
+{"pair_id": "3869600834-3926041583", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "write pattern predates A"}
+{"pair_id": "4131752137-4154673690", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3460924614-3497046363", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "4091828270-4092319684", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's yolo left exec mode stuck"}
+{"pair_id": "3339482750-3451194540", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3763018126-3779962414", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "expiry policy change"}
+{"pair_id": "4130656629-4144806980", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's PATH hint had escaping bug"}
+{"pair_id": "3944277628-4042497567", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "renovate parsing case"}
+{"pair_id": "4020309043-4072077507", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "test count after pin changes"}
+{"pair_id": "3779119076-3944111700", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4089900987-4105122988", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4011804917-4110589829", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "performance work"}
+{"pair_id": "4068958279-4072991771", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3889143273-4003476401", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3929834120-3955287418", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3312807032-3333906691", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3969835206-4143876460", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "unrelated"}
+{"pair_id": "3578136150-3578294870", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "feature"}
+{"pair_id": "4061707029-4109802438", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.9, "reason": "A's source whitelist rejected new form"}
+{"pair_id": "4062491037-4067048639", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "4043743694-4061771284", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "framework compat gap"}
+{"pair_id": "3850645419-3903381837", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "different output path"}
+{"pair_id": "4085604297-4090374085", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "metrics improvements"}
+{"pair_id": "3972152878-4011519728", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A ran post deps when main never ran"}
+{"pair_id": "4092340617-4153944336", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "robustness"}
+{"pair_id": "3277069718-3277136543", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's inspect command broke on signatures"}
+{"pair_id": "3901638939-3916844156", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's image-first flow broke"}
+{"pair_id": "4001656703-4112192789", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "type param bug may include A's field"}
+{"pair_id": "3778168377-3778502691", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "review fixes races in A's refactor"}
+{"pair_id": "3806690483-3807068528", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "cache regex predates A"}
+{"pair_id": "4113287789-4115905129", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "UX change"}
+{"pair_id": "4073390401-4073727594", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3894052171-3894471640", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "venue fallback enhancement"}
+{"pair_id": "3588509022-3610234062", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "unrelated"}
+{"pair_id": "3868928177-3882197600", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "review fixes undefined call in A"}
+{"pair_id": "3244968948-3258944092", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "4034861580-4102880856", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "refactor"}
+{"pair_id": "4085270642-4096991854", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.65, "reason": "logging suppression"}
+{"pair_id": "3095576295-3097996197", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A sent wrong media type"}
+{"pair_id": "3329011318-3329162584", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "race predates A"}
+{"pair_id": "4094624134-4099131066", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "broad layout work"}
+{"pair_id": "3825378764-3826333437", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "dependency update"}
+{"pair_id": "3840182734-3840278392", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "test addition"}
+{"pair_id": "3854051917-3863047200", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "regression from other pass"}
+{"pair_id": "4164784547-4177705513", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "version line"}
+{"pair_id": "3900357430-3900612004", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.75, "reason": "A's serializer still failed"}
+{"pair_id": "3256892146-3304131583", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.8, "reason": "annotation cleanup"}
+{"pair_id": "3757038836-3757067507", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.9, "reason": "version line"}
+{"pair_id": "3780416473-3892995472", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "race predates A"}
+{"pair_id": "3529473082-3563393780", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "lint style only"}
+{"pair_id": "3109662292-3123025148", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A's tar extraction broken"}
+{"pair_id": "3555030308-3555191089", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "separate bugs"}
+{"pair_id": "3247390275-3321398701", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "3326850032-3326928752", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.75, "reason": "trivial overlap"}
+{"pair_id": "4038596697-4039192340", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.55, "reason": "A's tool wrapper typing wrong"}
+{"pair_id": "3252433278-3253854218", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.7, "reason": "A hashed scripts before SW generation"}
+{"pair_id": "3778177395-3778571513", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.6, "reason": "alternative fix"}
+{"pair_id": "3528832891-3617804627", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "unrelated"}
+{"pair_id": "3677256898-3677927281", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.6, "reason": "A's macros broke no_std and shadowed args"}
+{"pair_id": "3942467092-4102916906", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "cherry-pick"}
+{"pair_id": "3148579081-3151667715", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "separate cast bug"}
+{"pair_id": "3187685492-3188655711", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "duplicate cases may come from A"}
+{"pair_id": "4106883612-4168082389", "model": "llm", "sample": "full", "verdict": "unclear", "confidence": 0.5, "reason": "path detection follow-up"}
+{"pair_id": "3922935828-3957865356", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.65, "reason": "A's thread check raced"}
+{"pair_id": "3836522617-3839867722", "model": "llm", "sample": "full", "verdict": "yes", "confidence": 0.8, "reason": "A created duplicate declaration"}
+{"pair_id": "3725335144-3725359282", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.85, "reason": "diagnostics"}
+{"pair_id": "4062478300-4105340795", "model": "llm", "sample": "full", "verdict": "no", "confidence": 0.7, "reason": "refresh behaviour"}

@@ -1,0 +1,20 @@
+metric,value,note
+label_precision_yes_only,0.257,"(0.231, 0.285)"
+label_precision_unclear_half,0.29,
+estimated_true_trouble_rate,0.0359,label rate 0.1110
+crossfit_auc_verified_yes,0.798,n=171
+crossfit_auc_judged_no,0.814,n=486
+crossfit_auc_reverted,0.718,n=919
+crossfit_auc_all_labels,0.799,n=19703
+crossfit_auc_yes_vs_no,0.45,n=657
+test_auc_line_labels,0.797,
+test_auc_verified_yes,0.784,n_yes=91
+precision_score_quartile_1,0.291,
+precision_score_quartile_2,0.301,
+precision_score_quartile_3,0.31,
+precision_score_quartile_4,0.205,
+fastlane_alpha_0.01,0.245,label_risk=0.0074 est_true_risk=0.0033
+fastlane_alpha_0.02,0.34,label_risk=0.0169 est_true_risk=0.0064
+fastlane_alpha_0.05,0.672,label_risk=0.0553 est_true_risk=0.0187
+plugin_true_risk_alpha_0.01,0.533,est_true_risk=0.0131
+plugin_true_risk_alpha_0.02,0.779,est_true_risk=0.0239
