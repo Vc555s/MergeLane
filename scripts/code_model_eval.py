@@ -6,7 +6,6 @@ tokens), and a blend whose weight is picked on the calibration month.
 """
 import subprocess, sys
 import numpy as np, pandas as pd
-from scipy.stats import rankdata
 from sklearn.metrics import roc_auc_score
 
 scores = pd.read_csv(sys.argv[1])
@@ -26,7 +25,11 @@ sc = scores.set_index("pr_id").score
 for df in (calib, test, held):
     df["gpu"] = df.pr_id.map(sc)
     df["gpu"] = df.gpu.fillna(df.gpu.median())   # PRs without source diff text
-    df["r_lgb"] = rankdata(df.s) / len(df); df["r_gpu"] = rankdata(df.gpu) / len(df)
+# put both scores on one scale: their rank within the calibration month (same mapping for every set)
+ref_lgb, ref_gpu = np.sort(calib.s.values), np.sort(calib.gpu.values)
+for df in (calib, test, held):
+    df["r_lgb"] = np.searchsorted(ref_lgb, df.s.values) / len(ref_lgb)
+    df["r_gpu"] = np.searchsorted(ref_gpu, df.gpu.values) / len(ref_gpu)
 best_w = max(np.linspace(0, 1, 11), key=lambda w: roc_auc_score(calib[LABEL], (1 - w) * calib.r_lgb + w * calib.r_gpu))
 print(f"blend weight on code model (picked on Dec 2025): {best_w:.1f}")
 rows = []
