@@ -50,6 +50,11 @@ test = s[s.fold.notna()].copy()
 size = test.groupby("repo_id").pr_id.transform("size")
 test["repo_size"] = pd.cut(size, [0, 5, 20, 100, np.inf], labels=["1-5", "6-20", "21-100", "100+"]).astype(str)
 
+METHOD = sys.argv[1] if len(sys.argv) > 1 else "bonferroni"
+HYBRID = sys.argv[2] if len(sys.argv) > 2 else ""   # "", "fallback" or "min"
+print("threshold test:", METHOD, "| hybrid:", HYBRID or "none")
+from math import ceil, log
+needed = lambda a: ceil(log(DELTA / 50 if METHOD == "bonferroni" else DELTA) / log(1 - a))
 rows, decisions = [], {}
 for name, key in SCHEMES.items():
     for a in ALPHAS:
@@ -59,14 +64,21 @@ for name, key in SCHEMES.items():
             cal = s[s[f"cal_score_{int(k)}"].notna()]
             cg, tf = key(cal), test[test.fold == k]
             tg = key(tf)
+            sc = f"cal_score_{int(k)}"
+            glob = select_threshold(cal[sc].values, cal[LABEL].values, alpha=a, delta=DELTA, method=METHOD)
             for g in tg.unique():
                 m = cg == g
-                t = select_threshold(cal.loc[m, f"cal_score_{int(k)}"].values, cal.loc[m, LABEL].values,
-                                     alpha=a, delta=DELTA) if m.sum() else None
-                n_groups += 1; n_closed += t is None
+                t = select_threshold(cal.loc[m, sc].values, cal.loc[m, LABEL].values,
+                                     alpha=a, delta=DELTA, method=METHOD) if m.sum() else None
+                thr = None if t is None else t.threshold
+                if HYBRID and m.sum() < needed(a):       # too small to say anything: use the global cut
+                    thr = None if glob is None else glob.threshold
+                elif HYBRID == "min" and thr is not None and glob is not None:
+                    thr = min(thr, glob.threshold)
+                n_groups += 1; n_closed += thr is None
                 idx = tf.index[tg == g]
-                if t is not None:
-                    fast.loc[idx] = tf.loc[idx, "score"] <= t.threshold
+                if thr is not None:
+                    fast.loc[idx] = tf.loc[idx, "score"] <= thr
         test["fast"] = fast
         evals = [("all", test)] + [(f"agent={g}", d) for g, d in test.groupby("agent")] + \
                 [(f"activity={g}", d) for g, d in test.groupby("act_band")] + \
@@ -74,18 +86,18 @@ for name, key in SCHEMES.items():
         for gname, g in evals:
             f = g[g.fast]
             k_, n_ = int(f[LABEL].sum()), len(f)
-            rows.append(dict(scheme=name, budget=a, group=gname, prs=len(g), fast=n_ / len(g),
+            rows.append(dict(method=METHOD, hybrid=HYBRID, scheme=name, budget=a, group=gname, prs=len(g), fast=n_ / len(g),
                              risk=k_ / n_ if n_ else np.nan, n_fast=n_,
                              p_breach=binom.sf(k_ - 1, n_, a) if n_ else np.nan,
                              groups=n_groups, groups_closed=n_closed))
 r = pd.DataFrame(rows)
-r.to_csv("docs/mondrian_eval.csv", index=False)
+r.to_csv(f"docs/mondrian_eval_{METHOD}{'_' + HYBRID if HYBRID else ''}.csv", index=False)
 pd.set_option("display.width", 200)
 for a in ALPHAS:
     v = r[r.budget == a]
     summ = v.groupby("scheme").apply(lambda x: pd.Series({
         "fast_all": x.loc[x.group == "all", "fast"].iloc[0], "risk_all": x.loc[x.group == "all", "risk"].iloc[0],
-        "worst_group_risk": x.risk.max(), "worst_group": x.loc[x.risk.idxmax(), "group"],
+        "worst_group_risk": x.risk.max(), "worst_group": x.loc[x.risk.idxmax(), "group"] if x.risk.notna().any() else "-",
         "groups_over_budget": int((x.risk > a).sum()), "real_breaches_p<0.05": int((x.p_breach < 0.05).sum())}),
         include_groups=False)
     print(f"\n=== budget {a:.0%} ===\n", summ.round(4).to_string())

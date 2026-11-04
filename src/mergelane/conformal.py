@@ -42,13 +42,21 @@ def select_threshold(
     delta: float = 0.10,
     min_fast_tracked: int = 30,
     n_candidates: int = 50,
+    method: str = "bonferroni",
 ) -> Threshold | None:
     """Return the loosest threshold whose risk bound stays <= alpha.
 
     scores: predicted risk per calibration PR (higher = riskier).
     labels: 1 if the PR later needed a revert or follow-up fix, else 0.
+    method: "bonferroni" tests every candidate at delta / m and keeps the loosest
+        that passes. "fixed_sequence" tests candidates from strict to loose, each at
+        the full delta, and stops at the first one that fails (Learn-then-Test with
+        fixed-sequence testing). Both keep the chance of a broken promise below
+        delta; fixed sequence has more power when groups are small.
     Returns None when no threshold meets the budget (everything goes to humans).
     """
+    if method not in ("bonferroni", "fixed_sequence"):
+        raise ValueError("method must be 'bonferroni' or 'fixed_sequence'")
     scores = np.asarray(scores, dtype=float)
     labels = np.asarray(labels, dtype=int)
     if scores.shape != labels.shape:
@@ -59,16 +67,21 @@ def select_threshold(
     n_total = len(scores)
     # Candidate thresholds: a fixed quantile grid of the calibration scores.
     grid = np.unique(np.quantile(scores, np.linspace(0, 1, n_candidates + 1)[1:]))
-    level = delta / len(grid)
+    level = delta / len(grid) if method == "bonferroni" else delta
+    # A candidate with fewer PRs than this cannot pass even with zero trouble, so the
+    # fixed sequence starts after them (this uses scores only, never labels).
+    min_k = max(min_fast_tracked, int(np.ceil(np.log(level) / np.log1p(-alpha))))
 
     best: Threshold | None = None
     for t in grid:                       # strict to loose
         mask = scores <= t
         k = int(mask.sum())
-        if k < min_fast_tracked:
+        if k < min_k:
             continue
         fails = int(labels[mask].sum())
         ub = clopper_pearson_upper(fails, k, level)
+        if ub > alpha and method == "fixed_sequence":
+            break                        # first failure ends the sequence
         if ub <= alpha:
             best = Threshold(
                 threshold=float(t),
