@@ -24,3 +24,19 @@ At a 10% risk budget it fast-tracks 43% of test PRs with realised risk 9.8% (gua
 - Verified-label sample (about 1,000 pairs) with an LLM judge, human-checked on 50.
 - Activity-controlled evaluation (match on future PR volume).
 - Per-repo calibration for repos with 200+ PRs.
+
+## Activity control (run 4 Nov)
+Stratifying the test set by how many fix-tagged PRs the repo had in the 30 days after the merge:
+
+| Future fix PRs in repo | n | base rate | AUC |
+|---|---|---|---|
+| 0 | 13,654 | 0.006 | 0.631 |
+| 1-2 | 10,825 | 0.168 | 0.687 |
+| 3-5 | 8,598 | 0.265 | 0.705 |
+| 6-15 | 13,358 | 0.354 | 0.749 |
+| 16-50 | 13,410 | 0.485 | 0.802 |
+| 50+ | 14,897 | 0.582 | 0.843 |
+
+Future activity alone (an oracle the model never sees) gets AUC 0.765. So a large part of the 0.816 is the model recognising busy repos, where co-edits by later fix PRs are common. Within comparable repos, the real signal is about 0.63 to 0.75, in line with published results (about 0.67 to 0.68).
+
+Implication: verified labels are essential, and the label rule should require the fix to touch the same lines (not just the same file) to reduce chance co-edits in busy repos. Patches are available in `pr_commit_details`, so a line-overlap rule is feasible.
