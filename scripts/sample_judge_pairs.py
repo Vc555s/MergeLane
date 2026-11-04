@@ -20,7 +20,7 @@ for i in range(pf.num_row_groups):
     for pid, fn, p in zip(t.pr_id, t.filename, t.patch):
         if (pid, fn) in need:
             patches.setdefault((pid, fn), []).append(p)
-def cut(x, n): return (x or "")[:n]
+def cut(x, n): return x[:n] if isinstance(x, str) else ""
 with open("data/judge_pairs.jsonl", "w") as out:
     for r in s.itertuples():
         a, b = pr.loc[r.pr_id], pr.loc[r.pr_id_fix]
