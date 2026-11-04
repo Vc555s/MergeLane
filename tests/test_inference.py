@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 from mergelane.features import build_features
-from mergelane.inference import FEATURES, Model, decide, detect_agent, pr_features
+from mergelane.inference import BASE_FEATURES, Model, decide, detect_agent, pr_features
 
 
 def test_detect_agent():
@@ -36,7 +36,7 @@ def test_features_match_training_pipeline():
               "share_sensitive", "only_docs_or_tests", "any_sensitive", "agent_Copilot"]:
         assert feats[c] == pytest.approx(float(t[c])), c
     assert feats["log_stars"] == pytest.approx(math.log1p(150))
-    assert list(feats) == FEATURES
+    assert list(feats) == BASE_FEATURES
 
 
 @pytest.fixture(scope="module")
@@ -48,8 +48,12 @@ def model():
 def test_shipped_model_loads_and_ranks(model, ):
     docs = [{"filename": "docs/guide.md", "additions": 4, "deletions": 1}]
     big = [{"filename": f"src/payments/billing_{i}.py", "additions": 300, "deletions": 50} for i in range(25)]
-    low = model.score(pr_features("Fix typo. Closes #3", docs, "Copilot", 50))
-    high = model.score(pr_features("", big, "Copilot", 50))
+    docs = [{**f, "status": "modified", "patch": "@@ -1 +1 @@\n-Teh guide\n+The guide"} for f in docs]
+    big = [{**f, "status": "modified", "patch": "@@ -1,2 +1,4 @@\n+if token is None:\n+    raise AuthError()\n+await charge(user, amount)\n-    return None"} for f in big]
+    feats = lambda body, files: model.features(body=body, files=files, agent="Copilot", stars=50,
+                                               commit_files=files, n_commits=1)
+    low = model.score(feats("Fix typo. Closes #3", docs))
+    high = model.score(feats("", big))
     assert 0 <= low < high <= 1
 
 

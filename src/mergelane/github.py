@@ -66,6 +66,15 @@ class GitHub:
     def pr_files(self, number: int) -> list[dict]:
         return self.paginate(f"/repos/{self.repo}/pulls/{number}/files")
 
+    def pr_commit_files(self, number: int, max_commits: int = 50) -> tuple[list[dict], int]:
+        """One entry per (commit, file) with its patch, as in training; and the commit count."""
+        commits = self.paginate(f"/repos/{self.repo}/pulls/{number}/commits", max_pages=3)
+        out = []
+        for c in commits[:max_commits]:
+            for f in (self.get(f"/repos/{self.repo}/commits/{c['sha']}") or {}).get("files", []):
+                out.append({"filename": f.get("filename", ""), "status": f.get("status", ""), "patch": f.get("patch")})
+        return out, len(commits)
+
     def ensure_label(self, name: str, color: str, description: str) -> None:
         try:
             self.post(f"/repos/{self.repo}/labels", {"name": name, "color": color, "description": description})

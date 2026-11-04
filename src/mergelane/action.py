@@ -77,10 +77,11 @@ def cmd_check(args) -> int:
             return 0
         stars = event.get("repository", {}).get("stargazers_count", 0)
     files = gh.pr_files(pr["number"])
+    commit_files, n_commits = gh.pr_commit_files(pr["number"])
     model = Model()
     dec = decide(model, author=pr["user"]["login"], branch=pr["head"]["ref"], body=pr.get("body") or "",
-                 files=files, stars=stars, budget=float(args.budget or env("risk-budget", "0.01")),
-                 agent=env("agent") or None)
+                 files=files, stars=stars, commit_files=commit_files, n_commits=n_commits,
+                 budget=float(args.budget or env("risk-budget", "0.01")), agent=env("agent") or None)
     print(dec.to_json())
     write_output(lane=dec.lane, score=dec.score, threshold=dec.threshold, agent=dec.agent)
     body = comment_body(dec, model.meta)

@@ -77,3 +77,15 @@ The strongest new features are the number of added conditions, added null checks
 - a fine-tuned code model.
 
 **Conclusion of stage 4.** The best practical model is LightGBM with portable, diff and code-token features: AUC 0.792, and 26.2% fast-tracked at a 1% label budget. The remaining limit is in the problem itself. Whether a merged change later needs a real bug fix is hard to predict from the change alone. That is a reportable finding for the write-up.
+
+# Shipped in v0.2.0
+
+The Action now uses the stage-4 winner: PR shape + diff counts + code-token score. The code is shared with training in `src/mergelane/diffstats.py`, so the two compute identical features. On row group 0 of the AIDev patches, the refactored extractors reproduce the stored diff features for 99.8% of PRs and the diff text for 99.9%; the rest are PRs whose commits span row groups. The model was retrained with `scripts/train_portable.py` and calibrated on February 2026.
+
+| Budget | Test months: fast-tracked | Test months: realised risk | Held | Calibration month: fast-tracked (upper risk bound) |
+|---|---|---|---|---|
+| 1% | 26.4% | 0.63% | yes | 28% (0.94%) |
+| 2% | 38.0% | 1.93% | yes | 36% (1.74%) |
+| 5% | 63.3% | 4.99% | yes | 62% (4.97%) |
+
+Test AUC is 0.793. The Action now fetches each commit's patch, which costs one API call per commit, capped at 50. It installs scikit-learn as well as LightGBM.

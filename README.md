@@ -9,7 +9,7 @@ AI coding agents now open more pull requests than humans can review. In 2026, 61
 
 The threshold between the lanes comes with a statistical promise, and a monthly check of that promise on your repository's own history. For example: *"Of the PRs we fast-track, at most 1% will need a revert or a follow-up fix."* You choose the percentage.
 
-> Status: v0.1.0, first working Action (week 3). Week-2 go/no-go passed on hand-verified labels: see [docs/WEEK2.md](docs/WEEK2.md).
+> Status: v0.2.0. The Action now reads each PR's diff: test AUC 0.793, with 26.4% of agent PRs fast-tracked at a 1% budget (held on the test months). See [docs/WEEK2.md](docs/WEEK2.md) for the go/no-go and [docs/STAGE4.md](docs/STAGE4.md) for the model experiments.
 
 ## Use it
 
@@ -27,7 +27,7 @@ jobs:
   lane:
     runs-on: ubuntu-latest
     steps:
-      - uses: Vc555s/mergelane@v0.1.0
+      - uses: Vc555s/mergelane@v0.2.0
         with:
           risk-budget: "0.01"   # 0.01, 0.02 or 0.05
 ```
@@ -46,13 +46,18 @@ Proving a 1% budget needs about 230 fast-tracked PRs, even with zero trouble. Mo
 Try it locally without changing anything on GitHub:
 
 ```
-pip install lightgbm . && GITHUB_TOKEN=... mergelane check --repo owner/name --pr 123 --dry-run
+pip install lightgbm scikit-learn . && GITHUB_TOKEN=... mergelane check --repo owner/name --pr 123 --dry-run
 ```
 
 ## How it works
 
 1. **Learn what risky looks like** from [AIDev](https://huggingface.co/datasets/hao-li/AIDev) (CC-BY-4.0): about 7.7M public PRs by Codex, Copilot, Devin, Cursor and Claude Code. The label is whether a merged PR was later reverted or needed a follow-up fix within 30 days.
-2. **Score each new PR** with a LightGBM model on what the GitHub API shows for the PR: file types, size, sensitive paths, description, agent and repo size. The research model also uses each repo's past trouble rate (AUC 0.797). The shipped "portable" model leaves that out because a new repo has no history yet (AUC 0.773; 21.2% fast-tracked at a 1% budget, which held on the test months).
+2. **Score each new PR** with a LightGBM model on what the GitHub API shows for the PR:
+   - its shape: file types, size, sensitive paths, description, agent and repo size;
+   - what its diff does: added conditions, null checks, error handling, concurrency, auth code, removed asserts and more, counted over every commit's patch;
+   - a score from a small model that reads the changed source lines as code tokens.
+
+   Test AUC is 0.793. At a 1% budget it fast-tracks 26.4% of PRs, and the budget held on the test months (v0.1 managed 21.2%). A fine-tuned code transformer added nothing beyond this ([docs/STAGE4.md](docs/STAGE4.md)).
 3. **Calibrate** with conformal risk control (Learn-then-Test with a Clopper-Pearson bound) on the newest labelled month. The threshold is the most permissive one whose upper risk bound among fast-tracked PRs stays under the budget. Retrain and recalibrate monthly with `scripts/train_portable.py`.
 4. **Act and check** through the GitHub Action: label, comment and outputs on each PR, plus the monthly promise check on your own history.
 
@@ -67,10 +72,11 @@ src/mergelane/
   evaluate.py    time-split evaluation, AUC, fast-track coverage at a risk budget
   rules.py       file-kind, fix-title and line-overlap rules shared by training and the Action
   inference.py   features for one PR from the GitHub API, agent detection, lane decision
+  diffstats.py   diff-content counts and code-token text, shared by training and the Action
   audit.py       monthly promise check on a repo's own history
   github.py      small GitHub REST client (standard library only)
   action.py      `mergelane check` and `mergelane audit` (the Action's entry point)
-  model/         shipped model (portable.txt) and its calibrated thresholds (portable.json)
+  model/         shipped model (portable.txt), code-token weights (code_tokens.npz), thresholds (portable.json)
 action.yml       the GitHub Action
 examples/        workflow to copy into your repository
 scripts/         data pipeline, experiments and train_portable.py
