@@ -9,7 +9,7 @@ AI coding agents now open more pull requests than humans can review. In 2026, 61
 
 The threshold between the lanes comes with a statistical promise, and a monthly check of that promise on your repository's own history. For example: *"Of the PRs we fast-track, at most 1% will need a revert or a follow-up fix."* You choose the percentage.
 
-> Status: v0.2.0. The Action now reads each PR's diff: test AUC 0.793, with 26.4% of agent PRs fast-tracked at a 1% budget (held on the test months). See [docs/WEEK2.md](docs/WEEK2.md) for the go/no-go and [docs/STAGE4.md](docs/STAGE4.md) for the model experiments.
+> Status: v0.3.0. Fast-lane thresholds are now certified separately per agent and per repo activity level. Over five fresh test months, no group went over a 1% or 2% budget. See [docs/CALIBRATION.md](docs/CALIBRATION.md).
 
 ## Use it
 
@@ -27,9 +27,9 @@ jobs:
   lane:
     runs-on: ubuntu-latest
     steps:
-      - uses: Vc555s/mergelane@v0.2.0
+      - uses: Vc555s/mergelane@v0.3.0
         with:
-          risk-budget: "0.01"   # 0.01, 0.02 or 0.05
+          risk-budget: "0.01"   # 0.01 or 0.02
 ```
 
 On each PR written by a coding agent (Claude Code, Copilot, Codex, Cursor, Devin or Jules), MergeLane:
@@ -58,7 +58,11 @@ pip install lightgbm scikit-learn . && GITHUB_TOKEN=... mergelane check --repo o
    - a score from a small model that reads the changed source lines as code tokens.
 
    Test AUC is 0.793. At a 1% budget it fast-tracks 26.4% of PRs, and the budget held on the test months (v0.1 managed 21.2%). A fine-tuned code transformer added nothing beyond this ([docs/STAGE4.md](docs/STAGE4.md)).
-3. **Calibrate** with conformal risk control (Learn-then-Test with a Clopper-Pearson bound) on the newest labelled month. The threshold is the most permissive one whose upper risk bound among fast-tracked PRs stays under the budget. Retrain and recalibrate monthly with `scripts/train_portable.py`.
+3. **Calibrate per group** with conformal risk control (Learn-then-Test with a Clopper-Pearson bound) on the last 3 labelled months. A group is an agent combined with how busy the repo is: merged agent PRs in the previous 90 days, banded 0–4, 5–19 or 20+.
+   - Each group gets its own cut: the most permissive one whose upper risk bound among fast-tracked PRs stays under the budget.
+   - A group without enough data to certify the budget gets no fast lane.
+   - At 1% today, that leaves Claude Code and Copilot PRs eligible; at 2%, 11 of 18 groups.
+   - The 5% budget was dropped because no rule kept it safe for every group.
 4. **Act and check** through the GitHub Action: label, comment and outputs on each PR, plus the monthly promise check on your own history.
 
 ## Layout

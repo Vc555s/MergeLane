@@ -39,3 +39,13 @@ For each test month the model is retrained on data before the calibration window
 - **Cost:** a smaller fast lane at 1% (15.4% instead of 27.5%). At 2% the cost is smaller (28.5% instead of 37.8%), and v0.2's 2% had 9 real breaches.
 - **5% is not safe under any rule.** Groups still break, so 5% should be removed from the Action.
 - **Caveat:** these rules were chosen after looking at the same months. The fresh-month check confirms the direction, but it is not a fully untouched test. The Action's monthly promise check (`audit`) is the ongoing safeguard.
+
+## Shipped in v0.3.0
+`scripts/train_portable.py` trains on PRs merged before December 2025 and certifies a separate cut per group on December 2025 to February 2026. The groups are agent × repo activity, 18 in total.
+
+| Budget | Groups with a fast lane | Check: train < Oct, calibrate Oct–Dec, test Jan–Feb 2026 |
+|---|---|---|
+| 1% | 6 of 18 (Claude Code and Copilot, every activity level) | 15.6% fast-tracked, realised risk 0.69% |
+| 2% | 11 of 18 | 29.7% fast-tracked, realised risk 1.41% |
+
+At 1%, the Cursor, Devin, Jules and Codex groups have too few PRs to certify the budget, so all of their PRs go to review. The Action counts the repo's merged agent PRs from the previous 90 days with the pulls API, capped at 20, and shows the group in its comment. Live dry-runs on this repo's PRs #5 and #6 put them in the groups `Claude_Code | 0-4` and `Claude_Code | 5-19`, and both went to review.
