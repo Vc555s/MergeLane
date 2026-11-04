@@ -15,14 +15,14 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: Vc555s/mergelane@v0.1.0
+      - uses: Vc555s/mergelane@v0.2.0
         with:
           risk-budget: "0.01"
   promise-check:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: Vc555s/mergelane@v0.1.0
+      - uses: Vc555s/mergelane@v0.2.0
         with:
           command: audit
           risk-budget: "0.01"

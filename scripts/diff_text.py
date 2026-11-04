@@ -9,8 +9,9 @@ import pandas as pd, pyarrow.parquet as pq
 import sys
 sys.path.insert(0, "src")
 from mergelane.rules import is_source
+from mergelane.diffstats import MAX_CHARS, diff_text  # shared with the Action
 
-SRC, MAX_FILE_LINES, MAX_CHARS = "data/pr_commit_details.parquet", 60, 6000
+SRC = "data/pr_commit_details.parquet"
 
 
 def one(i):
@@ -20,13 +21,8 @@ def one(i):
     t = t[t.filename.fillna("").map(is_source)]
     out = {}
     for pr, fn, patch in zip(t.pr_id, t.filename, t.patch):
-        if not isinstance(patch, str):
-            continue
-        cur = out.get(pr, "")
-        if len(cur) >= MAX_CHARS:
-            continue
-        lines = [l[:200] for l in patch.splitlines() if l[:1] in "+-" and not l.startswith(("+++", "---")) and l[1:].strip()]
-        out[pr] = (cur + f"\n### {fn}\n" + "\n".join(lines[:MAX_FILE_LINES]))[:MAX_CHARS]
+        if len(out.get(pr, "")) < MAX_CHARS:
+            out[pr] = (out.get(pr, "") + diff_text([{"filename": fn, "patch": patch}]))[:MAX_CHARS]
     print(f"row group {i}: {len(out)} PRs", flush=True)
     return pd.DataFrame({"pr_id": list(out), "text": list(out.values())})
 

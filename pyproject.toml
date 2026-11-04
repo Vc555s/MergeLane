@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mergelane"
-version = "0.1.0"
+version = "0.2.0"
 description = "A risk-controlled fast lane for AI-written pull requests"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,7 +28,7 @@ mergelane = "mergelane.action:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-mergelane = ["model/*.txt", "model/*.json"]
+mergelane = ["model/*.txt", "model/*.json", "model/*.npz"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -14,6 +14,9 @@ class FakeGH:
     def pr_files(self, n):
         return [{"filename": "docs/guide.md", "additions": 3, "deletions": 1}]
 
+    def pr_commit_files(self, n):
+        return [{"filename": "docs/guide.md", "status": "modified", "patch": "@@ -1 +1 @@\n-Teh\n+The"}], 1
+
     def ensure_label(self, *a):
         FakeGH.calls.append(("label", a[0]))
 

@@ -12,15 +12,17 @@ import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from . import diffstats
 from .rules import KIND_PATTERNS
 
 AGENTS = ["Claude_Code", "Copilot", "Cursor", "Devin", "Google_Jules", "OpenAI_Codex"]
-FEATURES = (
+BASE_FEATURES = (
     ["log_files", "log_lines", "body_len", "links_issue", "share_docs", "share_tests", "share_ci",
      "share_deps", "share_sensitive", "only_docs_or_tests", "any_sensitive"]
     + [f"agent_{a}" for a in AGENTS]
     + ["log_stars"]
 )
+FEATURES = BASE_FEATURES + diffstats.feature_names() + ["code_score"]
 MODEL_DIR = Path(__file__).parent / "model"
 LINKS_ISSUE = re.compile(r"(close[sd]?|fix(e[sd])?|resolve[sd]?) #\d+", re.I)
 
@@ -55,7 +57,7 @@ def detect_agent(author: str, branch: str, body: str) -> str | None:
 
 
 def pr_features(body: str, files: list[dict], agent: str, stars: int) -> dict[str, float]:
-    """Features for one PR, computed exactly as in training (features.py)."""
+    """PR-shape features for one PR, computed exactly as in training (features.py)."""
     names = [f["filename"] for f in files]
     n = max(len(names), 1)
     share = {k: sum(bool(p.search(fn)) for fn in names) / n for k, p in KIND_PATTERNS.items()}
@@ -72,7 +74,7 @@ def pr_features(body: str, files: list[dict], agent: str, stars: int) -> dict[st
         "log_stars": math.log1p(max(int(stars or 0), 0)),
     }
     out.update({f"agent_{a}": float(a == agent) for a in AGENTS})
-    return {k: out[k] for k in FEATURES}
+    return {k: out[k] for k in BASE_FEATURES}
 
 
 @dataclass
@@ -92,10 +94,27 @@ class Model:
     def __init__(self, model_dir: Path = MODEL_DIR, name: str = "portable"):
         import lightgbm as lgb  # heavy import kept out of module load
 
+        import numpy as np
+
         self.meta = json.loads((model_dir / f"{name}.json").read_text())
         self.booster = lgb.Booster(model_file=str(model_dir / f"{name}.txt"))
         if self.meta["features"] != FEATURES:
             raise ValueError("model was trained on a different feature list; retrain it")
+        w = np.load(model_dir / "code_tokens.npz")
+        self.coef, self.intercept = w["coef"], float(w["intercept"])
+
+    def code_score(self, text: str) -> float:
+        """The token model's chance of trouble from the changed source lines."""
+        z = diffstats.token_matrix([text]) @ self.coef + self.intercept
+        return float(1 / (1 + math.exp(-float(z[0]))))
+
+    def features(self, *, body: str, files: list[dict], agent: str, stars: int,
+                 commit_files: list[dict], n_commits: int) -> dict[str, float]:
+        """All model inputs for one PR. ``commit_files`` has one entry per (commit, file)."""
+        feats = pr_features(body, files, agent, stars)
+        feats.update(diffstats.diff_features(commit_files, n_commits))
+        feats["code_score"] = self.code_score(diffstats.diff_text(commit_files))
+        return feats
 
     def score(self, feats: dict[str, float]) -> float:
         return float(self.booster.predict([[feats[c] for c in FEATURES]])[0])
@@ -123,15 +142,31 @@ def explain(feats: dict[str, float]) -> list[str]:
     r.append(f"{n_files} files, {lines} lines changed")
     if not feats["links_issue"]:
         r.append("no linked issue")
+    adds = lambda k: round(math.expm1(feats.get(k, 0)))
+    if adds("add_cond") >= 5:
+        r.append(f"adds {adds('add_cond')} branching lines")
+    if adds("add_null"):
+        r.append(f"adds {adds('add_null')} null/None checks")
+    if adds("del_assert"):
+        r.append(f"removes {adds('del_assert')} assertions")
+    if adds("add_conc"):
+        r.append("adds concurrency code")
+    if adds("add_auth"):
+        r.append("touches auth or secrets code")
     return r
 
 
 def decide(model: Model, *, author: str, branch: str, body: str, files: list[dict], stars: int,
+           commit_files: list[dict] | None = None, n_commits: int | None = None,
            budget: float = 0.01, agent: str | None = None) -> Decision:
+    """Lane for one PR. Without ``commit_files``, the PR-level file patches stand in (one commit)."""
     agent = agent or detect_agent(author, branch, body)
     if agent is None:
         return Decision("not-agent", None, None, None, budget, ["not written by a known coding agent"])
-    feats = pr_features(body, files, agent, stars)
+    if commit_files is None:
+        commit_files, n_commits = files, 1
+    feats = model.features(body=body, files=files, agent=agent, stars=stars,
+                           commit_files=commit_files, n_commits=n_commits or 1)
     s, t = model.score(feats), model.threshold(budget)
     lane = "fast-track" if t is not None and s <= t else "review"
     return Decision(lane, agent, round(s, 4), None if t is None else round(t, 4), budget, explain(feats))
