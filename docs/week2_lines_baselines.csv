@@ -1,0 +1,17 @@
+model,alpha,auc,calib_cov,test_cov,test_risk,held
+rule_docs_tests_size,0.01,0.745,0.161,0.16,0.0082,True
+rule_docs_tests_size,0.02,0.745,0.248,0.242,0.0165,True
+rule_docs_tests_size,0.05,0.745,0.56,0.561,0.0564,False
+rule_docs_tests_size,0.1,0.745,0.92,0.92,0.1088,False
+logreg_submission_feats,0.01,0.751,0.18,0.167,0.0035,True
+logreg_submission_feats,0.02,0.751,0.28,0.249,0.0135,True
+logreg_submission_feats,0.05,0.751,0.54,0.496,0.0459,True
+logreg_submission_feats,0.1,0.751,0.92,0.894,0.1034,False
+lgbm_submission_feats,0.01,0.756,0.22,0.206,0.0059,True
+lgbm_submission_feats,0.02,0.756,0.3,0.276,0.0139,True
+lgbm_submission_feats,0.05,0.756,0.56,0.523,0.0474,True
+lgbm_submission_feats,0.1,0.756,0.92,0.904,0.1051,False
+lgbm_plus_repo_history,0.01,0.797,0.24,0.226,0.0058,True
+lgbm_plus_repo_history,0.02,0.797,0.36,0.338,0.0179,True
+lgbm_plus_repo_history,0.05,0.797,0.68,0.665,0.0548,False
+lgbm_plus_repo_history,0.1,0.797,0.96,0.966,0.1135,False
