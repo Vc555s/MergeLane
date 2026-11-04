@@ -62,12 +62,17 @@ for k, (other, held) in enumerate(GroupKFold(4).split(d, groups=d.repo_id)):
     m = lgb.LGBMClassifier(**PARAMS).fit(d.loc[tr, FEATURES].astype(float), y)
     cs = m.predict_proba(d.loc[ca, FEATURES].astype(float))[:, 1]
     d.loc[te, "score"] = m.predict_proba(d.loc[te, FEATURES].astype(float))[:, 1]
+    d.loc[ca, f"cal_score_{k}"] = cs     # kept so calibration schemes can be compared without retraining
+    d.loc[te, "fold"] = k
     for a in ALPHAS:
         t = select_threshold(cs, d.loc[ca, LABEL].values, alpha=a, delta=DELTA)
         d.loc[te, f"thr_{a}"] = t.threshold if t else -1.0
     print(f"fold {k}: train {len(tr)}, calib {len(ca)}, test {len(te)} PRs from {d.loc[te, 'repo_id'].nunique()} unseen repos, "
           f"AUC {roc_auc_score(d.loc[te, LABEL], d.loc[te, 'score']):.3f}", flush=True)
 
+keep = ["pr_id", "repo_id", "merged_at", "created_at", "stars", LABEL, "score", "fold"] + \
+       [f"agent_{a}" for a in AGENTS] + [c for c in d.columns if c.startswith("cal_score_")]
+d[keep].to_parquet("data/stage5_scores.parquet")
 t = d[d.score.notna()].copy()
 for a in ALPHAS:
     t[f"fast_{a}"] = t.score <= t[f"thr_{a}"]
