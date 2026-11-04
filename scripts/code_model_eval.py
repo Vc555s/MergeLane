@@ -35,7 +35,7 @@ for name, f in (("code model alone", lambda d: d.gpu), ("lightgbm best", lambda 
     c, t, h = f(calib).values, f(test).values, f(held).values
     tneg = test[LABEL].values == 0; yes = held.verdict.eq("yes").values
     thr = select_threshold(c, calib[LABEL].values, alpha=0.01, delta=0.1)
-    cov, risk = realised(t, test[LABEL].values, thr.threshold)
+    cov, risk = realised(t, test[LABEL].values, thr.threshold) if thr is not None else (0.0, float('nan'))
     rows.append(dict(model=name, auc_line_labels=roc_auc_score(test[LABEL], t),
                      auc_verified_yes=roc_auc_score(np.r_[np.ones(yes.sum()), np.zeros(tneg.sum())], np.r_[h[yes], t[tneg]]),
                      auc_yes_vs_no=roc_auc_score(yes, h), fast_at_1pct=cov, label_risk=risk))
