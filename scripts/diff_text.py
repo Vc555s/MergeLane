@@ -16,7 +16,8 @@ SRC, MAX_FILE_LINES, MAX_CHARS = "data/pr_commit_details.parquet", 60, 6000
 def one(i):
     ids = set(pd.read_parquet("data/dataset_v2.parquet", columns=["pr_id"]).reset_index().pr_id)
     t = pq.ParquetFile(SRC).read_row_group(i, columns=["pr_id", "filename", "patch"]).to_pandas()
-    t = t[t.pr_id.isin(ids) & t.filename.map(is_source)]
+    t = t[t.pr_id.isin(ids)]
+    t = t[t.filename.fillna("").map(is_source)]
     out = {}
     for pr, fn, patch in zip(t.pr_id, t.filename, t.patch):
         if not isinstance(patch, str):
