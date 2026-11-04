@@ -13,32 +13,7 @@ import re
 import pandas as pd
 import pyarrow.parquet as pq
 
-from mergelane.features import KIND_PATTERNS
-from mergelane.labels import is_boilerplate
-
-STRICT_FIX = re.compile(
-    r"^(\[?\w*\]?\s*)?(fix|bugfix|hotfix)\b|^\w+(\([^)]*\))?!?:\s*(fix|bug)"
-    r"|\b(bug|regression|hotfix|broken|crash)\b",
-    re.I,
-)
-TRIVIAL = re.compile(r"^[\s{}()\[\];,]*$|^(else|return|break|continue|pass|end|try|finally)\W*$")
-
-
-def is_source(path: str) -> bool:
-    if is_boilerplate(path):
-        return False
-    return not any(KIND_PATTERNS[k].search(path) for k in ("docs", "tests", "ci", "deps"))
-
-
-def changed_lines(patch: str, sign: str) -> set[str]:
-    out = set()
-    for line in patch.splitlines():
-        if line.startswith(sign) and not line.startswith(sign * 3):
-            s = line[1:].strip()
-            if len(s) >= 8 and not TRIVIAL.match(s):
-                out.add(s)
-    return out
-
+from mergelane.rules import STRICT_FIX, changed_lines, is_source
 
 ds = pd.read_parquet("data/dataset_v1.parquet")
 pr = pd.read_parquet("data/pull_request.parquet", columns=["id", "title"]).rename(columns={"id": "pr_id"})

@@ -2,17 +2,9 @@
 
 from __future__ import annotations
 
-import re
-
 import pandas as pd
 
-KIND_PATTERNS = {
-    "docs": re.compile(r"(\.(md|rst|txt|adoc)$)|(^|/)docs?/", re.I),
-    "tests": re.compile(r"(^|/)(tests?|__tests__|spec)/|(_test|\.test|\.spec|test_)[^/]*$", re.I),
-    "ci": re.compile(r"(^|/)\.(github|gitlab|circleci)/|Jenkinsfile|\.ya?ml$", re.I),
-    "deps": re.compile(r"(requirements.*\.txt|pyproject\.toml|package\.json|Cargo\.toml|go\.mod|pom\.xml|Gemfile)$", re.I),
-    "sensitive": re.compile(r"(auth|login|password|secret|token|payment|billing|crypto|security|migration|schema|infra|terraform|k8s|deploy)", re.I),
-}
+from .rules import KIND_PATTERNS  # shared with the Action
 
 
 def file_kind_shares(files: pd.DataFrame) -> pd.DataFrame:

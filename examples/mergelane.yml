@@ -1,0 +1,28 @@
+# Copy to .github/workflows/mergelane.yml in your repository.
+name: MergeLane
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  schedule:
+    - cron: "0 6 1 * *"   # monthly promise check, 1st of the month
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+jobs:
+  lane:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Vc555s/mergelane@v0.1.0
+        with:
+          risk-budget: "0.01"
+  promise-check:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Vc555s/mergelane@v0.1.0
+        with:
+          command: audit
+          risk-budget: "0.01"
