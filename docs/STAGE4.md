@@ -61,3 +61,19 @@ The strongest new features are the number of added conditions, added null checks
 **Finding.** Reading the code gives the best fast lane so far: 3.3 more points of PRs fast-tracked at the same 1% budget. It still doesn't separate real bugs from false alarms.
 
 **GPU step.** `notebooks/code_model_kaggle.ipynb` fine-tunes UniXcoder (125M parameters) on the same diff text on a free Kaggle T4. It was smoke-tested on CPU. Its input is `mergelane_diffs.parquet`, which holds all training PRs with diff text plus the calibration, test and hand-checked PRs (177 MB). It outputs `code_scores.csv` with a score for every non-training PR.
+
+**GPU result (Kaggle T4 x2, 1 epoch, 512 tokens).** The fine-tuned UniXcoder scores were evaluated with `scripts/code_model_eval.py`. The blend weight was picked on December 2025 only.
+
+| Model | Test AUC (line labels) | Verified bugs vs. clean PRs | Real bug vs. false alarm | Fast-tracked at 1% |
+|---|---|---|---|---|
+| Fine-tuned code model alone | 0.697 | 0.747 | 0.48 | 0% (budget not met) |
+| LightGBM best (portable + diff + code tokens) | 0.792 | 0.805 | 0.43 | 26.2% |
+| Blend | 0.796 | 0.812 | 0.44 | 26.0% |
+
+**Finding.** The transformer is weaker than the simple code-token model and adds almost nothing in the blend: +0.004 AUC and no fast-lane gain. None of the stage-4 levers separates real bugs from false alarms:
+- cleaner labels;
+- diff features;
+- code tokens;
+- a fine-tuned code model.
+
+**Conclusion of stage 4.** The best practical model is LightGBM with portable, diff and code-token features: AUC 0.792, and 26.2% fast-tracked at a 1% label budget. The remaining limit is in the problem itself. Whether a merged change later needs a real bug fix is hard to predict from the change alone. That is a reportable finding for the write-up.
