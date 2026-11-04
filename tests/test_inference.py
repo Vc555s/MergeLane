@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 from mergelane.features import build_features
-from mergelane.inference import BASE_FEATURES, Model, decide, detect_agent, pr_features
+from mergelane.inference import BASE_FEATURES, Model, activity_band, decide, detect_agent, group_key, pr_features
 
 
 def test_detect_agent():
@@ -57,11 +57,25 @@ def test_shipped_model_loads_and_ranks(model, ):
     assert 0 <= low < high <= 1
 
 
+def test_activity_groups():
+    assert [activity_band(n) for n in (0, 4, 5, 19, 20, 500)] == ["0-4", "0-4", "5-19", "5-19", "20+", "20+"]
+    assert group_key("Copilot", 7) == "Copilot | 5-19"
+
+
 def test_decide_lanes(model):
     docs = [{"filename": "docs/guide.md", "additions": 4, "deletions": 1}]
-    d = decide(model, author="Copilot", branch="copilot/docs", body="Fix typo. Closes #3", files=docs, stars=50)
-    assert d.lane in ("fast-track", "review") and d.agent == "Copilot" and d.threshold is not None
-    h = decide(model, author="bob", branch="feature", body="", files=docs, stars=50)
+    d = decide(model, author="Copilot", branch="copilot/docs", body="Fix typo. Closes #3", files=docs, stars=50,
+               recent_agent_prs=30)
+    assert d.lane in ("fast-track", "review") and d.agent == "Copilot" and d.group == "Copilot | 20+"
+    h = decide(model, author="bob", branch="feature", body="", files=docs, stars=50, recent_agent_prs=0)
     assert h.lane == "not-agent"
     with pytest.raises(ValueError):
-        model.threshold(0.03)
+        model.threshold(0.05, "Copilot | 20+")      # 5% is no longer offered
+    assert model.threshold(0.01, "NoSuchAgent | 0-4") is None   # unknown group: no fast lane
+
+
+def test_closed_group_goes_to_review(model, monkeypatch):
+    docs = [{"filename": "docs/guide.md", "additions": 1, "deletions": 0}]
+    monkeypatch.setitem(model.meta["group_thresholds"]["0.01"], "Copilot | 0-4", None)
+    d = decide(model, author="Copilot", branch="copilot/x", body="Closes #1", files=docs, stars=5, recent_agent_prs=0)
+    assert d.lane == "review" and d.threshold is None and any("no fast lane" in r for r in d.reasons)

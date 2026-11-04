@@ -9,7 +9,7 @@ inputs:
     description: "check (label the current PR) or audit (check the fast lane against its budget)."
     default: check
   risk-budget:
-    description: "Highest share of fast-tracked PRs allowed to need a revert or follow-up fix: 0.01, 0.02 or 0.05."
+    description: "Highest share of fast-tracked PRs allowed to need a revert or follow-up fix: 0.01 or 0.02."
     default: "0.01"
   labels:
     description: "Add a 'mergelane: fast-track' or 'mergelane: review' label."

@@ -7,11 +7,16 @@ v0.2 model: what the GitHub API gives for one PR.
   lines. Its score is one LightGBM input, cross-fitted on the training rows so the
   tree model never sees an in-sample score.
 
+Calibration (v0.3, see docs/CALIBRATION.md): thresholds are certified separately
+per group = agent x repo activity (merged agent PRs in the repo during the 90 days
+before the PR: 0-4, 5-19, 20+), on the last 3 labelled months, with Bonferroni
+Learn-then-Test. A group too small to certify a budget gets no fast lane.
+
 Steps
-1. Report: time split (train < Dec 2025, calibrate Dec, test Jan-Feb 2026).
-2. Ship: train on everything before the newest labelled month and calibrate on
-   that month. Writes src/mergelane/model/portable.txt (LightGBM), portable.json
-   (features, thresholds, provenance) and code_tokens.npz (token-model weights).
+1. Report: train < Oct 2025, calibrate Oct-Dec 2025, test Jan-Feb 2026.
+2. Ship: train on everything before the last 3 labelled months and calibrate on
+   them. Writes src/mergelane/model/portable.txt (LightGBM), portable.json
+   (features, per-group thresholds, provenance) and code_tokens.npz.
 
 Needs data/diff_features.parquet and data/diff_text.parquet (scripts/diff_features.py,
 scripts/diff_text.py). Usage: PYTHONPATH=src python scripts/train_portable.py
@@ -29,10 +34,11 @@ from sklearn.model_selection import KFold
 
 from mergelane import diffstats
 from mergelane.conformal import realised, select_threshold
-from mergelane.inference import FEATURES
+from mergelane.inference import ACTIVITY_DAYS, AGENTS, FEATURES, group_key
 
 LABEL = "trouble_lines"
-ALPHAS = [0.01, 0.02, 0.05]
+ALPHAS = [0.01, 0.02]            # 5% failed the per-group checks (docs/CALIBRATION.md)
+CAL_MONTHS = 3
 DELTA = 0.10
 OUT = "src/mergelane/model"
 PARAMS = dict(n_estimators=400, learning_rate=0.05, num_leaves=31, subsample=0.8, subsample_freq=1,
@@ -60,6 +66,15 @@ for k in keys:
 d = d.merge(pd.read_parquet("data/diff_text.parquet"), on="pr_id", how="left")
 d["text"] = d.text.fillna("")
 d = d.reset_index(drop=True)
+# repo activity: merged agent PRs in the same repo created in the 90 days before this PR
+allp = pd.read_parquet("data/dataset_v2.parquet", columns=["repo_id", "created_at"]).reset_index(drop=True)
+ats = allp.created_at.values.astype("datetime64[s]").astype(np.int64)
+by_repo = {r: np.sort(ats[i]) for r, i in allp.groupby("repo_id").indices.items()}
+ts = d.created_at.values.astype("datetime64[s]").astype(np.int64)
+W = ACTIVITY_DAYS * 86400
+d["recent_agent_prs"] = [int(np.searchsorted(by_repo[r], t) - np.searchsorted(by_repo[r], t - W)) for r, t in zip(d.repo_id, ts)]
+d["agent"] = d[[f"agent_{a}" for a in AGENTS]].idxmax(axis=1).str.replace("agent_", "")
+d["group"] = [group_key(a, n) for a, n in zip(d.agent, d.recent_agent_prs)]
 TOK = diffstats.token_matrix(d.text.tolist())
 print("rows", len(d), "token matrix", TOK.shape)
 
@@ -77,26 +92,44 @@ def code_scores(fit_idx, apply_idx):
 
 X = lambda df: df[FEATURES].astype(float)
 
-# 1. report on the fixed time split
-tr = np.where(d.merged_at < "2025-12-01")[0]
-ca = np.where((d.merged_at >= "2025-12-01") & (d.merged_at < "2026-01-01"))[0]
+
+def group_thresholds(scores, labels, groups, alpha):
+    """Per-group certified cuts; None for a group that cannot be certified."""
+    out = {}
+    for g in sorted(set(groups)):
+        m = groups == g
+        t = select_threshold(scores[m], labels[m], alpha=alpha, delta=DELTA)
+        out[g] = None if t is None else {
+            "threshold": t.threshold, "calib_n": int(m.sum()), "calib_coverage": round(t.coverage, 4),
+            "calib_risk": round(t.empirical_risk, 4), "risk_upper_bound": round(t.risk_upper_bound, 4),
+            "n_fast_tracked": t.n_fast_tracked}
+    return out
+
+# 1. report: train < Oct 2025, calibrate Oct-Dec 2025, test Jan-Feb 2026
+tr = np.where(d.merged_at < "2025-10-01")[0]
+ca = np.where((d.merged_at >= "2025-10-01") & (d.merged_at < "2026-01-01"))[0]
 te = np.where(d.merged_at >= "2026-01-01")[0]
 oof, rest, _ = code_scores(tr, np.r_[ca, te])
 d.loc[tr, "code_score"] = oof
 d.loc[np.r_[ca, te], "code_score"] = rest
 train, calib, test = d.loc[tr], d.loc[ca], d.loc[te]
 m = lgb.LGBMClassifier(**PARAMS).fit(X(train), train[LABEL])
-cs, ts = m.predict_proba(X(calib))[:, 1], m.predict_proba(X(test))[:, 1]
-report = {"auc_test": round(float(roc_auc_score(test[LABEL], ts)), 3), "budgets": {}}
+cs, tsc = m.predict_proba(X(calib))[:, 1], m.predict_proba(X(test))[:, 1]
+report = {"auc_test": round(float(roc_auc_score(test[LABEL], tsc)), 3), "budgets": {}}
 for a in ALPHAS:
-    t = select_threshold(cs, calib[LABEL].values, alpha=a, delta=DELTA)
-    cov, risk = realised(ts, test[LABEL].values, t.threshold) if t else (0.0, 0.0)
-    report["budgets"][str(a)] = {"test_coverage": round(cov, 3), "test_risk": round(risk, 4), "held": risk <= a}
+    gt = group_thresholds(cs, calib[LABEL].values, calib.group.values, a)
+    thr = np.array([gt[g]["threshold"] if gt.get(g) else -np.inf for g in test.group])
+    fast = tsc <= thr
+    risk = float(test[LABEL].values[fast].mean()) if fast.any() else 0.0
+    report["budgets"][str(a)] = {"test_coverage": round(float(fast.mean()), 3), "test_risk": round(risk, 4),
+                                 "held": risk <= a, "groups_open": sum(v is not None for v in gt.values()),
+                                 "groups": len(gt)}
 print("time-split report:", json.dumps(report))
 
-# 2. ship: newest labelled month is the calibration month
+# 2. ship: the last CAL_MONTHS labelled months are the calibration window
 last = d.merged_at.max().to_period("M").start_time.tz_localize("UTC")
-fi, ci = np.where(d.merged_at < last)[0], np.where(d.merged_at >= last)[0]
+first = (d.merged_at.max().to_period("M") - (CAL_MONTHS - 1)).start_time.tz_localize("UTC")
+fi, ci = np.where(d.merged_at < first)[0], np.where(d.merged_at >= first)[0]
 oof, rest, lr = code_scores(fi, ci)
 d.loc[fi, "code_score"] = oof
 d.loc[ci, "code_score"] = rest
@@ -105,18 +138,19 @@ m = lgb.LGBMClassifier(**PARAMS).fit(X(fit), fit[LABEL])
 cs = m.predict_proba(X(cal))[:, 1]
 thresholds = {}
 for a in ALPHAS:
-    t = select_threshold(cs, cal[LABEL].values, alpha=a, delta=DELTA)
-    thresholds[str(a)] = None if t is None else {
-        "threshold": t.threshold, "calib_coverage": round(t.coverage, 4),
-        "calib_risk": round(t.empirical_risk, 4), "risk_upper_bound": round(t.risk_upper_bound, 4),
-        "n_fast_tracked": t.n_fast_tracked}
-    print(f"alpha {a}: {thresholds[str(a)]}")
+    thresholds[str(a)] = group_thresholds(cs, cal[LABEL].values, cal.group.values, a)
+    gt = thresholds[str(a)]
+    print(f"alpha {a}: {sum(v is not None for v in gt.values())}/{len(gt)} groups open")
+    for g, v in gt.items():
+        print("  ", g.ljust(28), "closed" if v is None else f"cut {v['threshold']:.4f}, fast {v['calib_coverage']:.0%}")
 os.makedirs(OUT, exist_ok=True)
 m.booster_.save_model(f"{OUT}/portable.txt")
 np.savez_compressed(f"{OUT}/code_tokens.npz", coef=lr.coef_[0].astype(np.float32),
                     intercept=np.float32(lr.intercept_[0]))
 meta = {
-    "version": 2, "features": FEATURES, "label": LABEL, "delta": DELTA, "thresholds": thresholds,
+    "version": 3, "features": FEATURES, "label": LABEL, "delta": DELTA, "group_thresholds": thresholds,
+    "groups": "agent x repo activity (merged agent PRs in the previous 90 days: 0-4, 5-19, 20+)",
+    "calibration_months": f"{first.strftime('%Y-%m')} to {last.strftime('%Y-%m')}",
     "calibration_month": last.strftime("%Y-%m"), "n_train": int(len(fit)), "n_calib": int(len(cal)),
     "trained_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
     "dataset": "AIDev (hao-li/AIDev), merged agent PRs", "time_split_report": report,

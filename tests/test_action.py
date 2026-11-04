@@ -17,6 +17,9 @@ class FakeGH:
     def pr_commit_files(self, n):
         return [{"filename": "docs/guide.md", "status": "modified", "patch": "@@ -1 +1 @@\n-Teh\n+The"}], 1
 
+    def recent_agent_prs(self, before, is_agent, **kw):
+        return 3
+
     def ensure_label(self, *a):
         FakeGH.calls.append(("label", a[0]))
 
@@ -30,7 +33,7 @@ class FakeGH:
 def test_check_from_event(tmp_path, monkeypatch):
     pytest.importorskip("lightgbm")
     event = {"pull_request": {"number": 7, "user": {"login": "Copilot"}, "head": {"ref": "copilot/docs"},
-                              "body": "Fix typo. Closes #1"}, "repository": {"stargazers_count": 10}}
+                              "body": "Fix typo. Closes #1", "created_at": "2026-03-01T10:00:00Z"}, "repository": {"stargazers_count": 10}}
     (tmp_path / "event.json").write_text(json.dumps(event))
     out, summary = tmp_path / "out", tmp_path / "summary"
     monkeypatch.setenv("GITHUB_EVENT_PATH", str(tmp_path / "event.json"))
@@ -44,3 +47,20 @@ def test_check_from_event(tmp_path, monkeypatch):
     assert "lane=" in text and "agent=Copilot" in text
     assert "MergeLane" in summary.read_text()
     assert ("comment", True) in FakeGH.calls and any(c[0] == "set" for c in FakeGH.calls)
+
+
+def test_recent_agent_prs_counts_merged_agent_prs_in_window(monkeypatch):
+    from mergelane.github import GitHub
+
+    prs = [
+        {"created_at": "2026-03-02T00:00:00Z", "merged_at": "x", "user": {"login": "Copilot"}},   # after: skipped
+        {"created_at": "2026-02-20T00:00:00Z", "merged_at": "x", "user": {"login": "Copilot"}},   # counted
+        {"created_at": "2026-02-10T00:00:00Z", "merged_at": None, "user": {"login": "Copilot"}},  # not merged
+        {"created_at": "2026-01-15T00:00:00Z", "merged_at": "x", "user": {"login": "alice"}},     # human
+        {"created_at": "2025-12-15T00:00:00Z", "merged_at": "x", "user": {"login": "Copilot"}},   # counted
+        {"created_at": "2025-11-01T00:00:00Z", "merged_at": "x", "user": {"login": "Copilot"}},   # older than 90 days
+    ]
+    gh = GitHub(None, "o/r")
+    monkeypatch.setattr(gh, "_req", lambda *a, **k: (prs, {}))
+    n = gh.recent_agent_prs("2026-03-01T00:00:00Z", lambda p: p["user"]["login"] == "Copilot")
+    assert n == 2
