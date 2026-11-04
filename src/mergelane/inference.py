@@ -24,6 +24,21 @@ BASE_FEATURES = (
 )
 FEATURES = BASE_FEATURES + diffstats.feature_names() + ["code_score"]
 MODEL_DIR = Path(__file__).parent / "model"
+ACTIVITY_DAYS = 90
+ACTIVITY_BANDS = [(0, 4, "0-4"), (5, 19, "5-19"), (20, None, "20+")]
+
+
+def activity_band(n_recent_agent_prs: int) -> str:
+    """Band for the number of merged agent PRs the repo saw in the previous 90 days."""
+    for lo, hi, name in ACTIVITY_BANDS:
+        if n_recent_agent_prs >= lo and (hi is None or n_recent_agent_prs <= hi):
+            return name
+    raise ValueError(n_recent_agent_prs)
+
+
+def group_key(agent: str, n_recent_agent_prs: int) -> str:
+    """Calibration group: thresholds are certified separately per agent and repo activity."""
+    return f"{agent} | {activity_band(n_recent_agent_prs)}"
 LINKS_ISSUE = re.compile(r"(close[sd]?|fix(e[sd])?|resolve[sd]?) #\d+", re.I)
 
 # Who wrote the PR. Checked in order: the author account, then the branch name,
@@ -85,6 +100,7 @@ class Decision:
     threshold: float | None
     budget: float
     reasons: list[str]
+    group: str | None = None
 
     def to_json(self) -> str:
         return json.dumps(asdict(self))
@@ -119,11 +135,12 @@ class Model:
     def score(self, feats: dict[str, float]) -> float:
         return float(self.booster.predict([[feats[c] for c in FEATURES]])[0])
 
-    def threshold(self, budget: float) -> float | None:
-        t = self.meta["thresholds"].get(str(budget))
-        if t is None and str(budget) not in self.meta["thresholds"]:
-            raise ValueError(f"no calibrated threshold for budget {budget}; "
-                             f"choose one of {sorted(self.meta['thresholds'])}")
+    def threshold(self, budget: float, group: str) -> float | None:
+        """Certified cut for this budget and group; None means no fast lane for the group."""
+        table = self.meta["group_thresholds"]
+        if str(budget) not in table:
+            raise ValueError(f"no calibrated thresholds for budget {budget}; choose one of {sorted(table)}")
+        t = table[str(budget)].get(group)
         return None if t is None else t["threshold"]
 
 
@@ -157,9 +174,12 @@ def explain(feats: dict[str, float]) -> list[str]:
 
 
 def decide(model: Model, *, author: str, branch: str, body: str, files: list[dict], stars: int,
-           commit_files: list[dict] | None = None, n_commits: int | None = None,
+           recent_agent_prs: int, commit_files: list[dict] | None = None, n_commits: int | None = None,
            budget: float = 0.01, agent: str | None = None) -> Decision:
-    """Lane for one PR. Without ``commit_files``, the PR-level file patches stand in (one commit)."""
+    """Lane for one PR. Without ``commit_files``, the PR-level file patches stand in (one commit).
+
+    ``recent_agent_prs``: merged agent PRs in the repo created in the 90 days before this PR.
+    """
     agent = agent or detect_agent(author, branch, body)
     if agent is None:
         return Decision("not-agent", None, None, None, budget, ["not written by a known coding agent"])
@@ -167,6 +187,10 @@ def decide(model: Model, *, author: str, branch: str, body: str, files: list[dic
         commit_files, n_commits = files, 1
     feats = model.features(body=body, files=files, agent=agent, stars=stars,
                            commit_files=commit_files, n_commits=n_commits or 1)
-    s, t = model.score(feats), model.threshold(budget)
+    group = group_key(agent, recent_agent_prs)
+    s, t = model.score(feats), model.threshold(budget, group)
     lane = "fast-track" if t is not None and s <= t else "review"
-    return Decision(lane, agent, round(s, 4), None if t is None else round(t, 4), budget, explain(feats))
+    reasons = explain(feats)
+    if t is None:
+        reasons.append(f"no fast lane for {group.replace('_', ' ')} PRs at this budget (too little data to certify it)")
+    return Decision(lane, agent, round(s, 4), None if t is None else round(t, 4), budget, reasons, group)

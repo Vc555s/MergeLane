@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "features": [
     "log_files",
     "log_lines",
@@ -95,51 +95,190 @@
   ],
   "label": "trouble_lines",
   "delta": 0.1,
-  "thresholds": {
+  "group_thresholds": {
     "0.01": {
-      "threshold": 0.02101875595548386,
-      "calib_coverage": 0.28,
-      "calib_risk": 0.007,
-      "risk_upper_bound": 0.0094,
-      "n_fast_tracked": 12631
+      "Claude_Code | 0-4": {
+        "threshold": 0.01497303933334743,
+        "calib_n": 10425,
+        "calib_coverage": 0.24,
+        "calib_risk": 0.0036,
+        "risk_upper_bound": 0.0086,
+        "n_fast_tracked": 2502
+      },
+      "Claude_Code | 20+": {
+        "threshold": 0.013026391842906875,
+        "calib_n": 32769,
+        "calib_coverage": 0.2,
+        "calib_risk": 0.006,
+        "risk_upper_bound": 0.0092,
+        "n_fast_tracked": 6554
+      },
+      "Claude_Code | 5-19": {
+        "threshold": 0.009921729755143435,
+        "calib_n": 11086,
+        "calib_coverage": 0.22,
+        "calib_risk": 0.0037,
+        "risk_upper_bound": 0.0088,
+        "n_fast_tracked": 2439
+      },
+      "Copilot | 0-4": {
+        "threshold": 0.015118411472867549,
+        "calib_n": 7108,
+        "calib_coverage": 0.4,
+        "calib_risk": 0.0046,
+        "risk_upper_bound": 0.0095,
+        "n_fast_tracked": 2843
+      },
+      "Copilot | 20+": {
+        "threshold": 0.013611770796339946,
+        "calib_n": 13981,
+        "calib_coverage": 0.34,
+        "calib_risk": 0.005,
+        "risk_upper_bound": 0.0088,
+        "n_fast_tracked": 4754
+      },
+      "Copilot | 5-19": {
+        "threshold": 0.005314538293988332,
+        "calib_n": 5613,
+        "calib_coverage": 0.24,
+        "calib_risk": 0.0022,
+        "risk_upper_bound": 0.009,
+        "n_fast_tracked": 1347
+      },
+      "Cursor | 0-4": null,
+      "Cursor | 20+": null,
+      "Cursor | 5-19": null,
+      "Devin | 0-4": null,
+      "Devin | 20+": null,
+      "Devin | 5-19": null,
+      "Google_Jules | 0-4": null,
+      "Google_Jules | 20+": null,
+      "Google_Jules | 5-19": null,
+      "OpenAI_Codex | 0-4": null,
+      "OpenAI_Codex | 20+": null,
+      "OpenAI_Codex | 5-19": null
     },
     "0.02": {
-      "threshold": 0.03416472169517441,
-      "calib_coverage": 0.36,
-      "calib_risk": 0.0145,
-      "risk_upper_bound": 0.0174,
-      "n_fast_tracked": 16239
-    },
-    "0.05": {
-      "threshold": 0.09646634263324445,
-      "calib_coverage": 0.62,
-      "calib_risk": 0.046,
-      "risk_upper_bound": 0.0497,
-      "n_fast_tracked": 27967
+      "Claude_Code | 0-4": {
+        "threshold": 0.04208247880462918,
+        "calib_n": 10425,
+        "calib_coverage": 0.4,
+        "calib_risk": 0.0137,
+        "risk_upper_bound": 0.0197,
+        "n_fast_tracked": 4170
+      },
+      "Claude_Code | 20+": {
+        "threshold": 0.020590565677943495,
+        "calib_n": 32769,
+        "calib_coverage": 0.24,
+        "calib_risk": 0.013,
+        "risk_upper_bound": 0.0171,
+        "n_fast_tracked": 7865
+      },
+      "Claude_Code | 5-19": {
+        "threshold": 0.030285758929672724,
+        "calib_n": 11086,
+        "calib_coverage": 0.32,
+        "calib_risk": 0.0132,
+        "risk_upper_bound": 0.0198,
+        "n_fast_tracked": 3548
+      },
+      "Copilot | 0-4": {
+        "threshold": 0.04503802387281486,
+        "calib_n": 7108,
+        "calib_coverage": 0.64,
+        "calib_risk": 0.0141,
+        "risk_upper_bound": 0.0199,
+        "n_fast_tracked": 4549
+      },
+      "Copilot | 20+": {
+        "threshold": 0.026350430062709578,
+        "calib_n": 13981,
+        "calib_coverage": 0.46,
+        "calib_risk": 0.0149,
+        "risk_upper_bound": 0.0198,
+        "n_fast_tracked": 6431
+      },
+      "Copilot | 5-19": {
+        "threshold": 0.030783383540956603,
+        "calib_n": 5613,
+        "calib_coverage": 0.48,
+        "calib_risk": 0.0122,
+        "risk_upper_bound": 0.0197,
+        "n_fast_tracked": 2694
+      },
+      "Cursor | 0-4": null,
+      "Cursor | 20+": {
+        "threshold": 0.019848459502159823,
+        "calib_n": 1660,
+        "calib_coverage": 0.3199,
+        "calib_risk": 0.0038,
+        "risk_upper_bound": 0.0194,
+        "n_fast_tracked": 531
+      },
+      "Cursor | 5-19": null,
+      "Devin | 0-4": null,
+      "Devin | 20+": {
+        "threshold": 0.011844551017541921,
+        "calib_n": 2050,
+        "calib_coverage": 0.24,
+        "calib_risk": 0.002,
+        "risk_upper_bound": 0.0171,
+        "n_fast_tracked": 492
+      },
+      "Devin | 5-19": null,
+      "Google_Jules | 0-4": null,
+      "Google_Jules | 20+": null,
+      "Google_Jules | 5-19": null,
+      "OpenAI_Codex | 0-4": {
+        "threshold": 0.007444377748204537,
+        "calib_n": 1667,
+        "calib_coverage": 0.2004,
+        "calib_risk": 0.0,
+        "risk_upper_bound": 0.0184,
+        "n_fast_tracked": 334
+      },
+      "OpenAI_Codex | 20+": {
+        "threshold": 0.015087860297361031,
+        "calib_n": 3427,
+        "calib_coverage": 0.18,
+        "calib_risk": 0.0016,
+        "risk_upper_bound": 0.0136,
+        "n_fast_tracked": 617
+      },
+      "OpenAI_Codex | 5-19": {
+        "threshold": 0.01854162345504009,
+        "calib_n": 1731,
+        "calib_coverage": 0.2005,
+        "calib_risk": 0.0,
+        "risk_upper_bound": 0.0178,
+        "n_fast_tracked": 347
+      }
     }
   },
+  "groups": "agent x repo activity (merged agent PRs in the previous 90 days: 0-4, 5-19, 20+)",
+  "calibration_months": "2025-12 to 2026-02",
   "calibration_month": "2026-02",
-  "n_train": 132469,
-  "n_calib": 45109,
-  "trained_at": "2026-11-04T15:28:15Z",
+  "n_train": 83167,
+  "n_calib": 94411,
+  "trained_at": "2026-11-04T18:02:17Z",
   "dataset": "AIDev (hao-li/AIDev), merged agent PRs",
   "time_split_report": {
-    "auc_test": 0.793,
+    "auc_test": 0.776,
     "budgets": {
       "0.01": {
-        "test_coverage": 0.264,
-        "test_risk": 0.0063,
-        "held": true
+        "test_coverage": 0.156,
+        "test_risk": 0.0069,
+        "held": true,
+        "groups_open": 4,
+        "groups": 18
       },
       "0.02": {
-        "test_coverage": 0.38,
-        "test_risk": 0.0193,
-        "held": true
-      },
-      "0.05": {
-        "test_coverage": 0.633,
-        "test_risk": 0.0499,
-        "held": true
+        "test_coverage": 0.297,
+        "test_risk": 0.0141,
+        "held": true,
+        "groups_open": 8,
+        "groups": 18
       }
     }
   },

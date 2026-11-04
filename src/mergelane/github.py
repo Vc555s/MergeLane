@@ -75,6 +75,36 @@ class GitHub:
                 out.append({"filename": f.get("filename", ""), "status": f.get("status", ""), "patch": f.get("patch")})
         return out, len(commits)
 
+    def recent_agent_prs(self, before: str, is_agent, days: int = 90, cap: int = 20, max_pages: int = 10) -> int:
+        """Merged agent PRs created in the ``days`` before ``before`` (ISO time), counted up to ``cap``.
+
+        ``is_agent(pr) -> bool`` decides whether a PR was written by a coding agent.
+        Only the bands 0-4, 5-19 and 20+ matter, so counting stops at ``cap``.
+        """
+        from datetime import datetime, timedelta
+
+        end = datetime.fromisoformat(before.replace("Z", "+00:00"))
+        start = end - timedelta(days=days)
+        n, url = 0, f"/repos/{self.repo}/pulls"
+        params = {"state": "closed", "sort": "created", "direction": "desc", "per_page": 100}
+        for _ in range(max_pages):
+            data, headers = self._req("GET", url, params=params)
+            for pr in data:
+                created = datetime.fromisoformat(pr["created_at"].replace("Z", "+00:00"))
+                if created >= end:
+                    continue
+                if created < start:
+                    return n
+                if pr.get("merged_at") and is_agent(pr):
+                    n += 1
+                    if n >= cap:
+                        return n
+            nxt = [p for p in (headers.get("link") or "").split(",") if 'rel="next"' in p]
+            if not nxt:
+                break
+            url, params = nxt[0].split(";")[0].strip(" <>"), None
+        return n
+
     def ensure_label(self, name: str, color: str, description: str) -> None:
         try:
             self.post(f"/repos/{self.repo}/labels", {"name": name, "color": color, "description": description})

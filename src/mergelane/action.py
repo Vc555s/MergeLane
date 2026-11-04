@@ -53,16 +53,18 @@ def comment_body(dec, model_meta: dict) -> str:
     lines = [MARKER, f"### MergeLane", "", head]
     if dec.score is not None:
         t = "none (budget cannot be met)" if dec.threshold is None else f"{dec.threshold:.3f}"
-        lines += ["", f"| Agent | Predicted trouble chance | Fast-lane threshold | Risk budget |", "|---|---|---|---|",
-                  f"| {dec.agent.replace('_', ' ')} | {dec.score:.3f} | {t} | {dec.budget:.0%} |",
+        grp = (dec.group or "").split(" | ")[-1]
+        lines += ["", f"| Agent | Repo activity (agent PRs, 90 days) | Predicted trouble chance | Fast-lane threshold | Risk budget |",
+                  "|---|---|---|---|---|",
+                  f"| {dec.agent.replace('_', ' ')} | {grp} | {dec.score:.3f} | {t} | {dec.budget:.0%} |",
                   "", "What the model saw: " + "; ".join(dec.reasons) + "."]
     lines += ["", f"<sub>Fast lane means your team may use a lighter review. MergeLane never approves or merges. "
-                  f"Model calibrated on {model_meta.get('calibration_month', '?')}; mergelane {__version__}.</sub>"]
+                  f"Thresholds certified per agent and repo activity on {model_meta.get('calibration_months', model_meta.get('calibration_month', '?'))}; mergelane {__version__}.</sub>"]
     return "\n".join(lines) + "\n"
 
 
 def cmd_check(args) -> int:
-    from .inference import Model, decide
+    from .inference import Model, decide, detect_agent
 
     repo = args.repo or os.environ.get("GITHUB_REPOSITORY", "")
     gh = GitHub(env("github-token") or os.environ.get("GITHUB_TOKEN"), repo)
@@ -78,12 +80,14 @@ def cmd_check(args) -> int:
         stars = event.get("repository", {}).get("stargazers_count", 0)
     files = gh.pr_files(pr["number"])
     commit_files, n_commits = gh.pr_commit_files(pr["number"])
+    recent = gh.recent_agent_prs(pr["created_at"], lambda p: detect_agent(
+        p["user"]["login"], p["head"]["ref"], p.get("body") or "") is not None)
     model = Model()
     dec = decide(model, author=pr["user"]["login"], branch=pr["head"]["ref"], body=pr.get("body") or "",
-                 files=files, stars=stars, commit_files=commit_files, n_commits=n_commits,
+                 files=files, stars=stars, recent_agent_prs=recent, commit_files=commit_files, n_commits=n_commits,
                  budget=float(args.budget or env("risk-budget", "0.01")), agent=env("agent") or None)
     print(dec.to_json())
-    write_output(lane=dec.lane, score=dec.score, threshold=dec.threshold, agent=dec.agent)
+    write_output(lane=dec.lane, score=dec.score, threshold=dec.threshold, agent=dec.agent, group=dec.group)
     body = comment_body(dec, model.meta)
     write_summary(body.replace(MARKER + "\n", ""))
     if args.dry_run:
