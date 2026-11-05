@@ -11,6 +11,23 @@ The threshold between the lanes comes with a statistical promise, and a monthly 
 
 > Status: v0.3.0. Fast-lane thresholds are now certified separately per agent and per repo activity level. Over five fresh test months, no group went over a 1% or 2% budget. See [docs/CALIBRATION.md](docs/CALIBRATION.md).
 
+## Results at a glance
+
+Trained on 246,777 merged agent PRs from AIDev and tested on PRs the model never saw.
+
+| Test | Budget | PRs fast-tracked | Realised trouble rate |
+|---|---|---|---|
+| 7,676 unseen repositories (Jan–Feb 2026) | 1% | 25.6% | 0.57% |
+| 7,676 unseen repositories (Jan–Feb 2026) | 2% | 36.4% | 1.79% |
+| Five later months, per-group cuts (Oct 2025–Feb 2026) | 1% | 15.4% | 0 groups significantly over budget |
+| Five later months, per-group cuts (Oct 2025–Feb 2026) | 2% | 28.5% | 0 groups significantly over budget |
+
+One global cut keeps the promise on average but lets high-risk groups slip (red). Certifying a cut per agent and repo activity keeps every group under budget (blue), at the cost of a smaller fast lane:
+
+<img src="docs/fig_groups.png" alt="Realised trouble rate per group under a global cut and per-group cuts, at 1% and 2% budgets" width="520">
+
+What it cannot do yet: only about 1 in 4 "follow-up fix" labels is a real bug (checked on 1,000 pairs), and no model we tried tells the two apart. The promise is therefore stricter than it needs to be for real bugs. Details: [docs/WEEK2.md](docs/WEEK2.md), [docs/STAGE4.md](docs/STAGE4.md), [docs/STAGE5.md](docs/STAGE5.md).
+
 ## Use it
 
 Add [examples/mergelane.yml](examples/mergelane.yml) to `.github/workflows/` in your repository:
