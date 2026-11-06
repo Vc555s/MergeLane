@@ -1,5 +1,7 @@
 # MergeLane
 
+[![tests](https://github.com/Vc555s/MergeLane/actions/workflows/tests.yml/badge.svg)](https://github.com/Vc555s/MergeLane/actions/workflows/tests.yml)
+
 **A fast lane for AI-written pull requests, with a guarantee.**
 
 AI coding agents now open more pull requests than many teams can review. MergeLane looks at each PR and sorts it into one of two lanes:
@@ -9,7 +11,7 @@ AI coding agents now open more pull requests than many teams can review. MergeLa
 
 The threshold between the lanes comes with a statistical promise, and a monthly check of that promise on your repository's own history. For example: *"Of the PRs we fast-track, at most 1% will need a revert or a follow-up fix."* You choose the percentage.
 
-> Status: v0.3.0. Fast-lane thresholds are now certified separately per agent and per repo activity level. Over five fresh test months, no group went over a 1% or 2% budget. See [docs/CALIBRATION.md](docs/CALIBRATION.md).
+> Status: v0.3.0. Fast-lane thresholds are now certified separately per agent and per repo activity level. Over five later test months, no group went significantly over a 1% or 2% budget. See [docs/CALIBRATION.md](docs/CALIBRATION.md).
 
 ## Results at a glance
 
@@ -24,7 +26,16 @@ Trained on 246,777 merged agent PRs from AIDev and tested on PRs the model never
 | Five later months, per-group cuts (Oct 2025–Feb 2026) | 1% | 15.4% | 0 groups significantly over budget |
 | Five later months, per-group cuts (Oct 2025–Feb 2026) | 2% | 28.5% | 0 groups significantly over budget |
 
-One global cut keeps the promise on average but lets high-risk groups slip (red). Certifying a cut per agent and repo activity keeps every group under budget (blue), at the cost of a smaller fast lane:
+For scale: across all agent PRs in those test months, 12.7% ran into trouble. Against simpler ways of picking the fast lane, under the same per-group calibration and test months ([scripts/baselines_v03.py](scripts/baselines_v03.py)):
+
+| Score used to pick the fast lane | AUC | Fast-tracked at 1% | Fast-tracked at 2% |
+|---|---|---|---|
+| MergeLane model (v0.3) | 0.776 | 15.6% | 29.7% |
+| LightGBM on PR shape only (no diff or code features) | 0.755 | 11.4% | 23.4% |
+| Rule: docs/tests-only PRs first, then smallest | 0.745 | 8.4% | 17.4% |
+| Rule: smallest change first | 0.725 | 0.0% | 4.1% |
+
+One global cut keeps the promise on average but lets high-risk groups slip (red). Certifying a cut per agent and repo activity brings every group to or under budget within noise (blue), at the cost of a smaller fast lane:
 
 <img src="docs/fig_groups.png" alt="Realised trouble rate per group under a global cut and per-group cuts, at 1% and 2% budgets" width="520">
 
@@ -76,7 +87,7 @@ pip install lightgbm scikit-learn . && GITHUB_TOKEN=... mergelane check --repo o
 
 ## How it works
 
-1. **Learn what risky looks like** from [AIDev](https://huggingface.co/datasets/hao-li/AIDev) (CC-BY-4.0): 361k agent-written PRs by Codex, Copilot, Devin, Cursor, Jules and Claude Code, of which 246,777 were merged. The label is whether a merged PR was reverted, or had lines it added rewritten by a fix-titled PR, within 30 days. AIDev only contains agent PRs, so fixes made by humans are not seen and the label undercounts trouble.
+1. **Learn what risky looks like** from the `pull_request` table of [AIDev](https://huggingface.co/datasets/hao-li/AIDev) (CC-BY-4.0): 361k agent-written PRs by Codex, Copilot, Devin, Cursor, Jules and Claude Code, of which 246,777 were merged. The label is whether a merged PR was reverted, or had lines it added rewritten by a fix-titled PR, within 30 days. AIDev only contains agent PRs, so fixes made by humans are not seen and the label undercounts trouble.
 2. **Score each new PR** with a LightGBM model on what the GitHub API shows for the PR:
    - its shape: file types, size, sensitive paths, description, agent and repo size;
    - what its diff does: added conditions, null checks, error handling, concurrency, auth code, removed asserts and more, counted over every commit's patch;
@@ -116,8 +127,8 @@ docs/PLAN.md     evaluation protocol and go/no-go criteria
 ## Prior work this builds on
 
 - AIDev dataset: Hao Li et al., [arXiv 2602.09185](https://arxiv.org/abs/2602.09185)
-- Merge prediction on AIDev (AUC ~0.68): [arXiv 2607.12057](https://arxiv.org/html/2607.12057)
-- Follow-up fixes on agent PRs (4.5% verified within 30 days): [arXiv 2609.26847](https://arxiv.org/pdf/2609.26847)
+- Acceptance and review-effort prediction for human and agent PRs on AIDev: [arXiv 2607.12057](https://arxiv.org/abs/2607.12057)
+- Follow-up fixes and commit authorship on agent PRs: [arXiv 2609.26847](https://arxiv.org/abs/2609.26847)
 - Conformal JIT defect prediction: [MSR 2024](https://2024.msrconf.org/details/msr-2024-technical-papers/33/An-Empirical-Study-on-Just-in-time-Conformal-Defect-Prediction)
 - Conformal risk control: Angelopoulos et al., [arXiv 2208.02814](https://arxiv.org/abs/2208.02814)
 - Industry evidence: [Vercel, 58% of PRs merge without human review](https://vercel.com/blog/58-percent-of-prs-in-our-largest-monorepo-merge-without-human-review)
