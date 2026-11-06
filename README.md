@@ -17,8 +17,8 @@ Trained on 246,777 merged agent PRs from AIDev and tested on PRs the model never
 
 | Test | Budget | PRs fast-tracked | Realised trouble rate |
 |---|---|---|---|
-| Shipped v0.3 model: train before Oct 2025, test Jan–Feb 2026 | 1% | 15.6% | 0.69% |
-| Shipped v0.3 model: train before Oct 2025, test Jan–Feb 2026 | 2% | 29.7% | 1.41% |
+| v0.3 method, check run: train before Oct 2025, test Jan–Feb 2026 | 1% | 15.6% | 0.69% |
+| v0.3 method, check run: train before Oct 2025, test Jan–Feb 2026 | 2% | 29.7% | 1.41% |
 | 7,676 unseen repositories, one global cut (v0.2 model) | 1% | 25.6% | 0.57% |
 | 7,676 unseen repositories, one global cut (v0.2 model) | 2% | 36.4% | 1.79% |
 | Five later months, per-group cuts (Oct 2025–Feb 2026) | 1% | 15.4% | 0 groups significantly over budget |
@@ -82,7 +82,7 @@ pip install lightgbm scikit-learn . && GITHUB_TOKEN=... mergelane check --repo o
    - what its diff does: added conditions, null checks, error handling, concurrency, auth code, removed asserts and more, counted over every commit's patch;
    - a score from a small model that reads the changed source lines as code tokens.
 
-   The shipped v0.3 model has a test AUC of 0.776 (train before October 2025, test January to February 2026). A fine-tuned code transformer added nothing beyond these features ([docs/STAGE4.md](docs/STAGE4.md)).
+   With the v0.3 setup, test AUC is 0.776 (check run: train before October 2025, test January to February 2026). The shipped model is then retrained on data up to November 2025. A fine-tuned code transformer added nothing beyond these features ([docs/STAGE4.md](docs/STAGE4.md)).
 3. **Calibrate per group** with conformal risk control (Learn-then-Test with a Clopper-Pearson bound) on the last 3 labelled months. A group is an agent combined with how busy the repo is: merged agent PRs in the previous 90 days, banded 0–4, 5–19 or 20+.
    - Each group gets its own cut: the most permissive one whose upper risk bound among fast-tracked PRs stays under the budget.
    - A group without enough data to certify the budget gets no fast lane.
