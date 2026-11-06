@@ -13,6 +13,7 @@ import argparse
 import json
 import os
 import sys
+import urllib.error
 
 from . import __version__
 from .github import GitHub
@@ -92,13 +93,20 @@ def cmd_check(args) -> int:
     write_summary(body.replace(MARKER + "\n", ""))
     if args.dry_run:
         return 0
-    if truthy(env("labels", "true")) and dec.lane != "not-agent":
-        gh.ensure_label(FAST, "0e8a16", "MergeLane: low predicted risk, lighter review is OK")
-        gh.ensure_label(REVIEW, "fbca04", "MergeLane: needs a full review")
-        add = FAST if dec.lane == "fast-track" else REVIEW
-        gh.set_lane_label(pr["number"], add, [l for l in (FAST, REVIEW) if l != add])
-    if truthy(env("comment", "true")) and dec.lane != "not-agent":
-        gh.upsert_comment(pr["number"], MARKER, body)
+    try:
+        if truthy(env("labels", "true")) and dec.lane != "not-agent":
+            gh.ensure_label(FAST, "0e8a16", "MergeLane: low predicted risk, lighter review is OK")
+            gh.ensure_label(REVIEW, "fbca04", "MergeLane: needs a full review")
+            add = FAST if dec.lane == "fast-track" else REVIEW
+            gh.set_lane_label(pr["number"], add, [l for l in (FAST, REVIEW) if l != add])
+        if truthy(env("comment", "true")) and dec.lane != "not-agent":
+            gh.upsert_comment(pr["number"], MARKER, body)
+    except urllib.error.HTTPError as e:
+        if e.code != 403:
+            raise
+        # PRs from forks get a read-only token: keep the decision in the outputs and job summary.
+        print("::warning::MergeLane could not add a label or comment (read-only token, e.g. a PR from a fork). "
+              "The decision is in the job summary and the step outputs.")
     return 0
 
 
